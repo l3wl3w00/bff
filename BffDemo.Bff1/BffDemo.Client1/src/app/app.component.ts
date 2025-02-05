@@ -34,7 +34,7 @@ export class AppComponent {
   }
 
   getUserInfo() {
-    this.http.get<UserInfo>('https://localhost:5001/bff/user', { withCredentials: true })
+    this.http.get<UserInfo>('https://bff1.localhost:5001/bff/user', { withCredentials: true })
       .subscribe({
         next: (user) => {
           this.user = user;
@@ -49,7 +49,7 @@ export class AppComponent {
     const headers = new HttpHeaders({
       'X-CSRF': '1'
     });
-    return this.http.get('https://localhost:5001/api1/weatherforecast', {
+    return this.http.get('https://bff1.localhost:5001/api1/weatherforecast', {
       withCredentials: true,
       headers: headers
     });

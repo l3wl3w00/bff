@@ -1,4 +1,6 @@
-﻿using Duende.IdentityServer.Models;
+﻿using Duende.IdentityServer;
+using Duende.IdentityServer.Models;
+using IdentityModel;
 
 namespace BffDemo.IdentityServer;
 
@@ -7,13 +9,35 @@ public static class Config
     public static IEnumerable<IdentityResource> IdentityResources { get; } =
     [
         new IdentityResources.OpenId(),
-        new IdentityResources.Profile()
+        new()
+        {
+            Name = IdentityServerConstants.StandardScopes.Profile,
+            DisplayName = "User profile",
+            Description = "Your user profile information (first name, last name, etc.)",
+            Emphasize = true,
+            UserClaims = { 
+                JwtClaimTypes.Name,
+                JwtClaimTypes.FamilyName,
+                JwtClaimTypes.GivenName,
+                JwtClaimTypes.MiddleName,
+                JwtClaimTypes.NickName,
+                JwtClaimTypes.PreferredUserName,
+                JwtClaimTypes.Profile,
+                JwtClaimTypes.Picture,
+                JwtClaimTypes.WebSite,
+                JwtClaimTypes.Gender,
+                JwtClaimTypes.BirthDate,
+                JwtClaimTypes.ZoneInfo,
+                JwtClaimTypes.Locale,
+                JwtClaimTypes.UpdatedAt 
+            },
+        },
     ];
 
     public static IEnumerable<ApiScope> ApiScopes { get; } = 
     [
-        new("api1"),
-        new("api2"),
+        new("api1", [JwtClaimTypes.Name]),
+        new("api2", [JwtClaimTypes.Name]),
         new("client1"),
         new("client2")
     ];
@@ -22,35 +46,16 @@ public static class Config
     [
         new()
         {
-            ClientId = "client1",
-            ClientName = "Client1 IS Client",
-            AllowedGrantTypes = GrantTypes.Code,
-            RedirectUris = { "http://localhost:4200" },
-            PostLogoutRedirectUris = { "http://localhost:4200" },
-            ClientSecrets = { new Secret("222DD822-CDFB-48AA-B414-F66B97706401".Sha256()) },
-            AllowedScopes = { "openid", "profile", "client1" },
-            AllowedCorsOrigins = { "http://localhost:4200" },
-            Enabled = true
-        },
-        // new()
-        // {
-        //     ClientId = "client2",
-        //     ClientName = "Client2 IS Client",
-        //     AllowedGrantTypes = GrantTypes.Code,
-        //     RedirectUris = { "https://localhost:5001/signin-oidc" },
-        //     PostLogoutRedirectUris = { "https://localhost:5001/signout-callback-oidc" },
-        //     ClientSecrets = { new Secret("73D683B0-FA07-40FF-9EF8-6CEDB26612EF".Sha256()) },
-        //     AllowedScopes = { "openid", "profile", "api1" }, 
-        // },
-        new()
-        {
             ClientId = "bff1",
             ClientName = "BFF1 IS Client",
             AllowedGrantTypes = GrantTypes.Code,
             RedirectUris = { "https://localhost:5001/signin-oidc" },
             PostLogoutRedirectUris = { "https://localhost:5001/signout-callback-oidc" },
             ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
-            AllowedScopes = { "openid", "profile", "api1", "offline_access" },
+            AllowedScopes = { "openid", "profile", "api1" },
+            AccessTokenType = AccessTokenType.Jwt,
+            AlwaysIncludeUserClaimsInIdToken = true,
+
         },
         new()
         {
@@ -61,6 +66,9 @@ public static class Config
             PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
             AllowedScopes = { "openid", "profile", "api2" }, 
             AllowedGrantTypes = GrantTypes.Code,
+            AccessTokenType = AccessTokenType.Jwt,
+            AlwaysIncludeUserClaimsInIdToken = true,
+
         }
     ];
 }

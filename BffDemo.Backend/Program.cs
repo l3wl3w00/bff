@@ -18,7 +18,7 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("ApiScope", policy =>
     {
         policy.RequireAuthenticatedUser();
-        policy.RequireClaim("scope", "api1");
+        policy.RequireClaim("scope", "api1", "api2");
     });
 });
 var app = builder.Build();
@@ -37,20 +37,12 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", (ClaimsPrincipal user) =>
     {
-        
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
+        var email = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+        return Results.Ok($"Logged in by {email}");
     })
     .WithName("GetWeatherForecast")
     .RequireAuthorization("ApiScope");
-
+    
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)

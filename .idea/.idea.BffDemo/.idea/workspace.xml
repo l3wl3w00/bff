@@ -5,6 +5,7 @@
     <projectFile profileName="https">Bff.Backend/Bff.Backend.csproj</projectFile>
     <projectFile profileName="http">BffDemo.Backend/BffDemo.Backend.csproj</projectFile>
     <projectFile profileName="https">BffDemo.Bff1/BffDemo.Bff1.csproj</projectFile>
+    <projectFile profileName="https">BffDemo.Bff2/BffDemo.Bff2.csproj</projectFile>
     <projectFile profileName="SelfHost">BffDemo.IdentityServer/BffDemo.IdentityServer.csproj</projectFile>
   </component>
   <component name="AutoImportSettings">
@@ -12,8 +13,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8458e5d5-57b3-47ef-8ec2-670298ec22d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BffDemo.Backend/BffDemo.Backend.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/auth-service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/auth-service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.IdentityServer/ProfileService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BffDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BffDemo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Backend/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.config.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.config.server.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/appsettings.Development.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.IdentityServer/Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.IdentityServer/Config.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.IdentityServer/HostingExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.IdentityServer/HostingExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.IdentityServer/Pages/TestUsers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.IdentityServer/Pages/TestUsers.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,10 +42,23 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;l3wl3w00&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/l3wl3w00/bff.git&quot;,
+    &quot;accountId&quot;: &quot;f62670fa-fbc3-4ca4-9eba-b09b7e447ed6&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/BffDemo.Backend/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BffDemo.Backend/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BffDemo.Backend/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/package-lock.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/243a037ca7a04510a506adfdd94befbac90930/1c/77d66eec/0200067Epdb231Low.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/b99960d8ce4b4c8a96655b85296cd82e50c00/1b/1d4d7517/02000052pdb9Low.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/b99960d8ce4b4c8a96655b85296cd82e50c00/38/d932a246/02000050pdb7Low.cs" root0="SKIP_HIGHLIGHTING" />
@@ -37,16 +66,23 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/b99960d8ce4b4c8a96655b85296cd82e50c00/b2/31813f98/0200004Fpdb6Low.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/e3af3914d86b499696de4207f29cc5bd121c00/44/f7664b84/02000068pdb314.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/e3af3914d86b499696de4207f29cc5bd121c00/44/f7664b84/02000068pdb314Low.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/4db36763b7d04376a4837b0568a664df50620/31/fefd134b/TokenValidationParameters.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/dd038ea9e11c410ba2cc20723c0c0fc818938/f7/b856e8b0/ClaimTypes.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/0133d82fdbf8325d1ff672e2015d6814babdcb6af24b1ac18fb971f253e8598/Constants.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/01dffb3b587ce51281a221cb3949d5a7a13fab56d40ab4ad1142b6670d22ce5/UserInteractionOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1b6f942ec1c17c47bfbdcadfacf0b77683b0fdb7d7f768a29f98c488cd682289/Client.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/202ba2552e76dcae1e4c55e4e439b09a0695bcd197e3b363d562c9a27e63d8/Counter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2051b75cd9da20d4736c927d3150f0997394a97e20e190f9db66c75543601353/AuthorizationRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/23f0b8a8ee6e7ecf5133beff735fd182a153f73a55224e73a2a2f06e576856/RoutingEndpointConventionBuilderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/24baa99dd8f67b797750aa9e414d3aa0bddac232f5e0cf511c68cb9d1ad1558/OptionsServiceCollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/251767e24490ee5f495b897c31e90dd33c56ebf28cfb9cb978cbe92cec279/NullableAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2740ba27f8b11238cafa7c83ab81f93ba41fc5d6c8c39e79e31f2ddfb0725/IAuthorizeInteractionResponseGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/278f60ab4e025d6e8f2f7f4943049ca067d0ffcc7bef1471d86e94ed5419c0/AuthorizeInteractionResponseGenerator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2f6869ed7b6ab322fb98c2a93e94596187e5dcffcba7c4f2329059814022c95d/TokenType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/345b876796a6b1d8833bccaf6e5317fae0965079e5256835674f8cf9e8d93/AuthenticationService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/35c4701f88ff3aac29a93d5649294794e6794f11b696c29cbe4a3c3df3163a/JwtClaimTypes.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/36c080b92e1725cb9967fce49bfd7eed192a0f42265188a3c5c3cfba3b9de91/IEndpointConventionBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/37160e2aaa3f5b368fc75a0ea5c53d2d62f844df3c72a3e362a84ff2ada7f3/RequestHeaderRemoveTransform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/381a7e1b782e6712ea16d13afb69ffe9deaa1f25b6a796d31cd4f554c3d01982/IdentityResource.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3c286166b73291be32a56cf26caac009d9ed846f2dd72f2be47799069931cd5/StringsExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3df83ba939b9035b39222adaeed33329ed051317e70f45341b37daf19de4/OidcReturnUrlParser.cs" root0="FORCE_HIGHLIGHTING" />
@@ -54,8 +90,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/45b60641084f947ae5368d995c0d82bd38dbc12aaff62a61b6611c3b79c0/BffRemoteApiEndpointExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/4882fb5139e445a53a7b39130adef2e18df2a30d090f68ebe806fac6af15d/GrantType.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/53914a8e7482343547316f49bb4724ee7ba3672a19901c8f595eebdd86f8721/BffEndpointRouteBuilderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6354a7b35d7821629924d3676acd7e67a6f7f94343e0e66ec439aa2bd6ed5/ThrowHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6539a5ccb40c714b462f2526e47e35a251c795d3a615548217b4c30ce51c0d5/ApiScope.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6fb86216cb4462ea75415e738b639eb71462d38f491ed2cbc9a7d7dbda5c7c0/Constants.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6eeadc849ec34c715fe2dfa37837f1117b68fdeaeac3259a43636acae432/IdentityResources.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/6fb86216cb4462ea75415e738b639eb71462d38f491ed2cbc9a7d7dbda5c7c0/Constants.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/7532d687213ac07f4deadbc3ca698b39d7d2e8dab586e29310d2f86ee66941/BffMiddleware.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/75fc67a6ffd0b946e7401bf5ccc134eb80cc3acd6b5d52dc2dd7a6addeb7ff4/LicenseValidatorLocal.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/767416e28eab3ae465b48ec9776711c7b4798dbf17574a36b861070d34dea/IIdentityServerInteractionService.cs" root0="FORCE_HIGHLIGHTING" />
@@ -66,8 +104,10 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a29a41e2a5f155c6a4aa89680cf4647cdfaf461525f344b2c3191449d4a711/AuthenticationProperties.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a8466e73326ad96fff5b1a65cf5c622da286318f509a7dc31432a52d3b9c4/Instrument.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a8cc146ed255e3f7a4f60e66aa950e24e88627ebd14941a2118b595b4eb9e/OpenIdConnectHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ad5008a592f7f1fe83d41524154d8a464ebc9cdd2f94189bb2c07118d9d72c/TokenValidationParameters.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/add92c74759b8bda7d2506fb5a92aee95cd35187010567c852912c38d8fd1e5/BffServiceCollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b2cd4a831138c1f6d81edb9942c5bea1de4be74e465c84c872f61b265b991f/IReturnUrlParser.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b4203644f5e8d8597a106b78b35dac4a7e661f13bd9d2f8e52fee49f553f824f/IdentityServerServiceCollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b6c446fe51a3645f2845df297bf081f971d3948f74c77fc703b32d453fc5c/BffRemoteApiEndpointMetadata.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/b7efcfabde6fdb696d7c5463a78c334e6a32bdd47a44baed3853f3726bde/Additional.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ba76db993d389fbb126444712d35949775a56c91373afd70652492a9b770/IClientStore.cs" root0="FORCE_HIGHLIGHTING" />
@@ -75,10 +115,15 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/bcebae8d822b1029416c3311d4d840deeab963c82c1e9a62d99299cf39f48114/TokenValidationParameters.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/ca451c12d69fe026a0e7e9b1a0ddbf4cf6f6b8316cb2aec7984a7241813f648/AuthenticationHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cd1d7cb036271927a5a8a01d562c7a4872cfcbaaee7510991145f3d02f83539/IIdentityServerBuilder.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/cf4c674f2694cf6afe3d7454a7c757c47269fb15516c25f1466f92feec89dc/AccessTokenResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d0a5d6661d6f6d5681bee4bd604c87a1fdcc5f425049b1ed661d8769be452/LicenseValidator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d4af282f93f22ec7aa3711abaacb06d1e7474626a7a4d2a6fb7d301736653/BffApplicationBuilderExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d8c6cbbad37f88d354ef8aa2b11572be4b963df4848b1622e270dc491ad0c8/OpenIdConnectEvents.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/da209ffba0b6537658fb88bd421b886333ee60905232aa5aea331436d2d388d/IAccessTokenRetriever.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dc4f4489f7626d97e8bf20c84624436f64b41770b14da57aee6d859f5cc6bd9/ValidatedAuthorizeRequest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/dea3904e6d17c03e723474466cdbf78b65fb622eca4fae5c9f239e1c94ba0d2/ReturnUrlParser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/df2ecf3eed3da47972cb88a8778cb793c9d424f81bfad1708e9933eeb64a61/RequestTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e425d7d5a97623cd24279ff712a492f3d4f0ea4b4e8364132aca692d472b6e10/NoAccessTokenResult.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f119e43ede93382bb27a4e74cc928bcf564be4d65f3e91b1a61ee84da53cb1/InMemoryResourcesStore.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f128dae15ab34ce7f3394ecb1e2167e06f84d30f53fd1c2deedc925337e965/HttpContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/f16564c8c4b61e6ea398fe412680c6b795b266584ccf6a362aed712dc4d2b387/WebApplication.cs" root0="SKIP_HIGHLIGHTING" />
@@ -89,6 +134,7 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -99,29 +145,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.Bff.Backend: http.executor": "Run",
-    ".NET Launch Settings Profile.Bff.Backend: https.executor": "Run",
-    ".NET Launch Settings Profile.BffDemo.Bff1: https.executor": "Debug",
-    ".NET Launch Settings Profile.BffDemo.IdentityServer: SelfHost.executor": "Run",
-    ".NET Project.BffDemo.IdentityServer.executor": "Run",
-    "HTTP Request.Bff.Backend | #1.executor": "Run",
-    "HTTP Request.BffDemo.Backend | #1.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
-    "ts.external.directory.path": "C:\\Main\\Work\\CMG\\BFF\\BffDemo\\BffDemo.Bff1\\BffDemo.Client1\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Bff.Backend: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.Bff.Backend: https.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Launch Settings Profile.BffDemo.Bff1: https.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Launch Settings Profile.BffDemo.Bff2: https.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Launch Settings Profile.BffDemo.IdentityServer: SelfHost.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Project.BffDemo.IdentityServer.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.Bff.Backend | #1.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.BffDemo.Backend | #1.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Main\\Work\\CMG\\BFF\\BffDemo\\BffDemo.Bff1\\BffDemo.Client1\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.BffDemo.Bff1: https">
+}</component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.Bff.Backend: https">
     <configuration name="BffDemo.IdentityServer" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -163,6 +211,21 @@
     </configuration>
     <configuration name="BffDemo.Bff1: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Bff1.csproj" />
+      <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
+      <option name="LAUNCH_PROFILE_NAME" value="https" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
+      <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
+      <option name="SEND_DEBUG_REQUEST" value="1" />
+      <option name="ADDITIONAL_IIS_EXPRESS_ARGUMENTS" value="" />
+      <method v="2">
+        <option name="Build" />
+      </method>
+    </configuration>
+    <configuration name="BffDemo.Bff2: https" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
+      <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Bff2.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
       <option name="LAUNCH_PROFILE_NAME" value="https" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
@@ -222,6 +285,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue=".NET Launch Settings Profile.BffDemo.Bff2: https" />
       <item itemvalue=".NET Launch Settings Profile.BffDemo.Backend: http" />
       <item itemvalue=".NET Launch Settings Profile.Bff.Backend: http" />
       <item itemvalue=".NET Launch Settings Profile.Bff.Backend: https" />
@@ -247,73 +311,32 @@
       <option name="presentableId" value="Default" />
       <updated>1738322731316</updated>
       <workItem from="1738322732462" duration="12882000" />
-      <workItem from="1738568452249" duration="17161000" />
+      <workItem from="1738568452249" duration="17867000" />
+      <workItem from="1738655643883" duration="22697000" />
+      <workItem from="1738741277737" duration="5498000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <option name="closed" value="true" />
+      <created>1738594498338</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738594498338</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BffDemo.IdentityServer/Pages/Account/Login/Index.cshtml.cs</url>
-          <line>65</line>
-          <properties documentPath="C:\Main\Work\CMG\BFF\BffDemo\BffDemo.IdentityServer\Pages\Account\Login\Index.cshtml.cs" containingFunctionPresentation="Method 'OnPost'">
-            <startOffsets>
-              <option value="2410" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2489" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/BffDemo.Bff1/Program.cs</url>
-          <line>119</line>
-          <properties documentPath="C:\Main\Work\CMG\BFF\BffDemo\BffDemo.Bff1\Program.cs" containingFunctionPresentation="Method 'ProcessRequestAsync'">
-            <startOffsets>
-              <option value="3259" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3311" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/53914a8e7482343547316f49bb4724ee7ba3672a19901c8f595eebdd86f8721/BffEndpointRouteBuilderExtensions.cs</url>
-          <line>25</line>
-          <properties documentPath="C:\Users\gyorg\AppData\Roaming\JetBrains\Rider2024.3\resharper-host\SourcesCache\53914a8e7482343547316f49bb4724ee7ba3672a19901c8f595eebdd86f8721\BffEndpointRouteBuilderExtensions.cs" containingFunctionPresentation="Method 'ProcessWith'">
-            <startOffsets>
-              <option value="721" />
-            </startOffsets>
-            <endOffsets>
-              <option value="783" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.ts</url>
-          <line>19</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.config.ts</url>
-          <line>24</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="Type#Microsoft.AspNetCore.Http.HttpContext+HttpContextDebugView" memberName="Response" />

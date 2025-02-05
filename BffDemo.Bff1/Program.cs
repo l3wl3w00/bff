@@ -1,17 +1,25 @@
 using Duende.Bff.Yarp;
 using BffDemo.Bff1;
 using Duende.Bff;
+using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Yarp.ReverseProxy.Transforms;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngular", policy =>
+    {
+        policy.WithOrigins("http://localhost:4200")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials(); // Important for sending/receiving cookies.
+    });
+});
 builder.Services.AddBff()
     .AddRemoteApis();
-builder.Services.RemoveAll(typeof(ILoginService));
-builder.Services.RemoveAll(typeof(ILogoutService));
-builder.Services.AddTransient<ILoginService, LoginService>();
-builder.Services.AddTransient<ILogoutService, LogoutService>();
 Configuration config = new();
 builder.Configuration.Bind("BFF", config);
 
@@ -23,8 +31,11 @@ builder.Services.AddAuthentication(options =>
     })
     .AddCookie("cookie", options =>
     {
-        options.Cookie.Name = "__Host-bff";
-        options.Cookie.SameSite = SameSiteMode.Strict;
+        options.Cookie.Name = "__Host-bff2";
+        // Allow the cookie to be sent on cross-site requests:
+        options.Cookie.SameSite = SameSiteMode.None;
+        // Make sure the cookie is always sent over HTTPS:
+        options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     })
     .AddOpenIdConnect("oidc", options =>
     {
@@ -36,7 +47,7 @@ builder.Services.AddAuthentication(options =>
         options.ResponseMode = "query";
 
         options.GetClaimsFromUserInfoEndpoint = true;
-        options.MapInboundClaims = false;
+        options.MapInboundClaims = true;
         options.SaveTokens = true;
 
         options.Scope.Clear();
@@ -47,13 +58,34 @@ builder.Services.AddAuthentication(options =>
 
         options.TokenValidationParameters = new()
         {
-            NameClaimType = "name",
-            RoleClaimType = "role"
+            NameClaimType = JwtClaimTypes.Name,
+            RoleClaimType = JwtClaimTypes.Role
+        };
+        
+        options.Events = new OpenIdConnectEvents
+        {
+            OnTokenResponseReceived = context =>
+            {
+                var accessToken = context.TokenEndpointResponse.AccessToken;
+                Console.WriteLine($"[OnTokenResponseReceived] Access Token: {accessToken}");
+                return Task.CompletedTask;
+            },
+            OnTokenValidated = context =>
+            {
+                var tokens = context.Properties.GetTokens();
+                Console.WriteLine("[OnTokenValidated] Tokens:");
+                foreach (var token in tokens)
+                {
+                    Console.WriteLine($" - {token.Name}: {token.Value}");
+                }
+                return Task.CompletedTask;
+            }
         };
     });
 
 
 var app = builder.Build();
+app.UseCors("AllowAngular");
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
@@ -61,9 +93,7 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseBff();
 
-// app.MapBffManagementLoginEndpoint();
 app.MapBffManagementSilentLoginEndpoints();
-// app.MapBffManagementLogoutEndpoint();
 app.MapBffManagementBackchannelEndpoint();
 app.MapBffDiagnosticsEndpoint();
 
@@ -72,7 +102,7 @@ app.MapGet("/bff/login", async (HttpContext context) =>
     if (context.User?.Identity?.IsAuthenticated != true)
     {
         // Redirect back to root after successful login.
-        var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4200" };
+        var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4201" };
         await context.ChallengeAsync("oidc", properties);
     }
     else
@@ -83,7 +113,7 @@ app.MapGet("/bff/login", async (HttpContext context) =>
 
 app.MapGet("/bff/logout", async (HttpContext context) =>
 {
-    var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4200" };
+    var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4201" };
     await context.SignOutAsync("cookie", properties);
     await context.SignOutAsync("oidc", properties);
 });
@@ -101,45 +131,11 @@ app.MapGet("/bff/user", (HttpContext context) =>
     return Results.Unauthorized();
 });
 
-if (config.Apis.Any())
+
+foreach (var api in config.Apis)
 {
-    foreach (var api in config.Apis)
-    {
-        app.MapRemoteBffApiEndpoint(api.LocalPath, api.RemoteUrl!)
-            .RequireAccessToken(api.RequiredToken);
-    }
+    app.MapRemoteBffApiEndpoint(api.LocalPath, api.RemoteUrl!)
+        .RequireAccessToken(api.RequiredToken);
 }
 
 app.Run();
-
-
-public class LoginService : ILoginService
-{
-    public async Task ProcessRequestAsync(HttpContext context)
-    {
-        if (context.User?.Identity?.IsAuthenticated == true)
-        {
-            // If already authenticated, simply redirect to the home page.
-            context.Response.Redirect("/");
-            return;
-        }
-
-        // Set a redirect URI after a successful login (in this case, back to the root).
-        await context.ChallengeAsync(
-            "oidc",
-            new AuthenticationProperties
-            {
-                RedirectUri = "/"
-            });
-    }
-}
-
-public class LogoutService : ILogoutService
-{
-    public async Task ProcessRequestAsync(HttpContext context)
-    {
-        var properties = new AuthenticationProperties { RedirectUri = "/" };
-        await context.SignOutAsync("cookie", properties);
-        await context.SignOutAsync("oidc", properties);
-    }
-}

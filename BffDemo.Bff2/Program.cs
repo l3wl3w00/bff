@@ -1,5 +1,5 @@
 using Duende.Bff.Yarp;
-using BffDemo.Bff1;
+using BffDemo.Bff2;
 using Duende.Bff;
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
@@ -12,7 +12,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.WithOrigins("http://localhost:4201")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials(); // Important for sending/receiving cookies.
@@ -31,7 +31,7 @@ builder.Services.AddAuthentication(options =>
     })
     .AddCookie("cookie", options =>
     {
-        options.Cookie.Name = "__Host-bff1";
+        options.Cookie.Name = "__Host-bff2";
         // Allow the cookie to be sent on cross-site requests:
         options.Cookie.SameSite = SameSiteMode.None;
         // Make sure the cookie is always sent over HTTPS:
@@ -102,7 +102,7 @@ app.MapGet("/bff/login", async (HttpContext context) =>
     if (context.User?.Identity?.IsAuthenticated != true)
     {
         // Redirect back to root after successful login.
-        var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4200" };
+        var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4201" };
         await context.ChallengeAsync("oidc", properties);
     }
     else
@@ -113,7 +113,7 @@ app.MapGet("/bff/login", async (HttpContext context) =>
 
 app.MapGet("/bff/logout", async (HttpContext context) =>
 {
-    var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4200" };
+    var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4201" };
     await context.SignOutAsync("cookie", properties);
     await context.SignOutAsync("oidc", properties);
 });

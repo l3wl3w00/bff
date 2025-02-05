@@ -12,24 +12,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8458e5d5-57b3-47ef-8ec2-670298ec22d6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/auth-service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.IdentityServer/ProfileService.cs" afterDir="false" />
+    <list default="true" id="8458e5d5-57b3-47ef-8ec2-670298ec22d6" name="Changes" comment="done">
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Bff2.csproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.vscode/tasks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/angular.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.routes.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/main.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/tsconfig.app.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/tsconfig.spec.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/Configuration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/Program.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/Properties/launchSettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/appsettings.Development.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/appsettings.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/wwwroot/StyleSheet.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/wwwroot/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/wwwroot/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/wwwroot/libs/bootstrap.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BffDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BffDemo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Backend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.config.server.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.config.server.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/auth-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/auth-service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/appsettings.Development.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/auth-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/auth-service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BffDemo.IdentityServer/Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.IdentityServer/Config.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.IdentityServer/HostingExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.IdentityServer/HostingExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.IdentityServer/Pages/TestUsers.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.IdentityServer/Pages/TestUsers.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +192,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.Bff.Backend: https">
+  <component name="RunManager" selected=".NET Launch Settings Profile.BffDemo.Bff2: https">
     <configuration name="BffDemo.IdentityServer" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -313,7 +336,7 @@
       <workItem from="1738322732462" duration="12882000" />
       <workItem from="1738568452249" duration="17867000" />
       <workItem from="1738655643883" duration="22697000" />
-      <workItem from="1738741277737" duration="5498000" />
+      <workItem from="1738741277737" duration="7413000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -323,7 +346,15 @@
       <option name="project" value="LOCAL" />
       <updated>1738594498338</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="done">
+      <option name="closed" value="true" />
+      <created>1738747148510</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738747148510</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +365,8 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init" />
-    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <MESSAGE value="done" />
+    <option name="LAST_COMMIT_MESSAGE" value="done" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

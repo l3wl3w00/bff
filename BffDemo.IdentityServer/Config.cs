@@ -9,37 +9,35 @@ public static class Config
     public static IEnumerable<IdentityResource> IdentityResources { get; } =
     [
         new IdentityResources.OpenId(),
-        new()
-        {
-            Name = IdentityServerConstants.StandardScopes.Profile,
-            DisplayName = "User profile",
-            Description = "Your user profile information (first name, last name, etc.)",
-            Emphasize = true,
-            UserClaims = { 
-                JwtClaimTypes.Name,
-                JwtClaimTypes.FamilyName,
-                JwtClaimTypes.GivenName,
-                JwtClaimTypes.MiddleName,
-                JwtClaimTypes.NickName,
-                JwtClaimTypes.PreferredUserName,
-                JwtClaimTypes.Profile,
-                JwtClaimTypes.Picture,
-                JwtClaimTypes.WebSite,
-                JwtClaimTypes.Gender,
-                JwtClaimTypes.BirthDate,
-                JwtClaimTypes.ZoneInfo,
-                JwtClaimTypes.Locale,
-                JwtClaimTypes.UpdatedAt 
-            },
-        },
+        new IdentityResources.Profile()
+        // {
+        //     Name = IdentityServerConstants.StandardScopes.Profile,
+        //     DisplayName = "User profile",
+        //     Description = "Your user profile information (first name, last name, etc.)",
+        //     Emphasize = true,
+        //     UserClaims = { 
+        //         JwtClaimTypes.Name,
+        //         JwtClaimTypes.FamilyName,
+        //         JwtClaimTypes.GivenName,
+        //         JwtClaimTypes.MiddleName,
+        //         JwtClaimTypes.NickName,
+        //         JwtClaimTypes.PreferredUserName,
+        //         JwtClaimTypes.Profile,
+        //         JwtClaimTypes.Picture,
+        //         JwtClaimTypes.WebSite,
+        //         JwtClaimTypes.Gender,
+        //         JwtClaimTypes.BirthDate,
+        //         JwtClaimTypes.ZoneInfo,
+        //         JwtClaimTypes.Locale,
+        //         JwtClaimTypes.UpdatedAt 
+        //     },
+        // },
     ];
 
     public static IEnumerable<ApiScope> ApiScopes { get; } = 
     [
-        new("api1", [JwtClaimTypes.Name]),
-        new("api2", [JwtClaimTypes.Name]),
-        new("client1"),
-        new("client2")
+        new("api1"),
+        new("api2"),
     ];
 
     public static IEnumerable<Client> Clients { get; } =

@@ -30,22 +30,11 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", (ClaimsPrincipal user) =>
+app.MapGet("/email", (ClaimsPrincipal user) =>
     {
         var email = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
         return Results.Ok($"Logged in by {email}");
     })
-    .WithName("GetWeatherForecast")
     .RequireAuthorization("ApiScope");
     
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

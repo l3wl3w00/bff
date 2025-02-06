@@ -1,6 +1,0 @@
-@BffDemo.Backend_HostAddress = http://localhost:6000
-
-GET {{BffDemo.Backend_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

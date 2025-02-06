@@ -12,46 +12,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8458e5d5-57b3-47ef-8ec2-670298ec22d6" name="Changes" comment="done">
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Bff2.csproj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.vscode/extensions.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.vscode/launch.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/.vscode/tasks.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/angular.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.routes.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/tsconfig.spec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/Configuration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/Properties/launchSettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/appsettings.Development.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/appsettings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/wwwroot/StyleSheet.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/wwwroot/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/wwwroot/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/BffDemo.Bff2/wwwroot/libs/bootstrap.min.css" afterDir="false" />
+    <list default="true" id="8458e5d5-57b3-47ef-8ec2-670298ec22d6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BffDemo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BffDemo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Backend/BffDemo.Backend.http" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Backend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Backend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/app/app.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/auth-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/BffDemo.Client1/src/auth-service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff1/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/auth-service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/auth-service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff1/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/src/app/app.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff2/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff2/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff2/appsettings.Development.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BffDemo.Bff2/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.Bff2/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/BffDemo.IdentityServer/Config.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BffDemo.IdentityServer/Config.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,10 +49,13 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Main/Work/CMG/BFF/BffDemo/BffDemo.Backend/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BffDemo.Backend/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BffDemo.Backend/appsettings.Development.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BffDemo.Backend/appsettings.json" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Main/Work/CMG/BFF/BffDemo/BffDemo.Bff1/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/BffDemo.Bff2/BffDemo.Client2/package-lock.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Main/Work/CMG/BFF/BffDemo/BffDemo.Bff2/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/243a037ca7a04510a506adfdd94befbac90930/1c/77d66eec/0200067Epdb231Low.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/b99960d8ce4b4c8a96655b85296cd82e50c00/1b/1d4d7517/02000052pdb9Low.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/ILViewer/b99960d8ce4b4c8a96655b85296cd82e50c00/38/d932a246/02000050pdb7Low.cs" root0="SKIP_HIGHLIGHTING" />
@@ -336,7 +310,8 @@
       <workItem from="1738322732462" duration="12882000" />
       <workItem from="1738568452249" duration="17867000" />
       <workItem from="1738655643883" duration="22697000" />
-      <workItem from="1738741277737" duration="7413000" />
+      <workItem from="1738741277737" duration="13076000" />
+      <workItem from="1738843418322" duration="477000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -354,7 +329,23 @@
       <option name="project" value="LOCAL" />
       <updated>1738747148510</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added bff2">
+      <option name="closed" value="true" />
+      <created>1738749151493</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1738749151493</updated>
+    </task>
+    <task id="LOCAL-00004" summary="solve 431">
+      <option name="closed" value="true" />
+      <created>1738749188921</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1738749188921</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -366,7 +357,9 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="init" />
     <MESSAGE value="done" />
-    <option name="LAST_COMMIT_MESSAGE" value="done" />
+    <MESSAGE value="added bff2" />
+    <MESSAGE value="solve 431" />
+    <option name="LAST_COMMIT_MESSAGE" value="solve 431" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

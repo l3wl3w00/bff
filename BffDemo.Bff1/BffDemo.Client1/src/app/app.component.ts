@@ -49,7 +49,7 @@ export class AppComponent {
     const headers = new HttpHeaders({
       'X-CSRF': '1'
     });
-    return this.http.get('https://bff1.localhost:5001/api1/weatherforecast', {
+    return this.http.get('https://bff1.localhost:5001/api1/email', {
       withCredentials: true,
       headers: headers
     });

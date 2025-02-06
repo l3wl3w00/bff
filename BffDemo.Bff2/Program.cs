@@ -32,9 +32,7 @@ builder.Services.AddAuthentication(options =>
     .AddCookie("cookie", options =>
     {
         options.Cookie.Name = "__Host-bff2";
-        // Allow the cookie to be sent on cross-site requests:
         options.Cookie.SameSite = SameSiteMode.None;
-        // Make sure the cookie is always sent over HTTPS:
         options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     })
     .AddOpenIdConnect("oidc", options =>
@@ -60,26 +58,6 @@ builder.Services.AddAuthentication(options =>
         {
             NameClaimType = JwtClaimTypes.Name,
             RoleClaimType = JwtClaimTypes.Role
-        };
-        
-        options.Events = new OpenIdConnectEvents
-        {
-            OnTokenResponseReceived = context =>
-            {
-                var accessToken = context.TokenEndpointResponse.AccessToken;
-                Console.WriteLine($"[OnTokenResponseReceived] Access Token: {accessToken}");
-                return Task.CompletedTask;
-            },
-            OnTokenValidated = context =>
-            {
-                var tokens = context.Properties.GetTokens();
-                Console.WriteLine("[OnTokenValidated] Tokens:");
-                foreach (var token in tokens)
-                {
-                    Console.WriteLine($" - {token.Name}: {token.Value}");
-                }
-                return Task.CompletedTask;
-            }
         };
     });
 

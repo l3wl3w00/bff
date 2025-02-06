@@ -1,6 +1,7 @@
-﻿## BFF SSO Demo
+﻿# BFF SSO Demo
 Ez a demo a BFF és az SSO együttes működését mutatja be.
 
+## Komponensek
 Ez a demo 2 különböző alkalmazást szimulál, és összesen 6 különböző alkalmazás-komponensből áll, 
 amik párhuzamosan futnak, és kommunikálnak egymással:
 - Kliens 1 és Kliens 2
@@ -19,9 +20,20 @@ amik párhuzamosan futnak, és kommunikálnak egymással:
 - Backend
   - Ez pedig egy egyszerű ASP.NET backend WEB API, amit mindkét alkalmazás authentikáltan hív
   - `localhost:6000` címen fut
+## Folyamat
 
 Az alábbi ábra szemlélteti azt a folyamatot, ami által a felhasználó mindkét alkalmazásba bejelentkezik, de az adatait csak az első alkalommal adja meg:
 ![folyamat.png](docs/folyamat.png)
 
 Az ábrában sorszámozva vannak a kérések, ezek olyan sorrendben hajtódnak végre. Az "1."-tal kezdődő sorszámmal rendelkező 
 kérések jelentik az első alkalmazás bejelentkezési folyamatának a részét, a "2."-tal kezdődőek pedig a másodikét.
+
+## Futtatás előtt
+Lokális futtatás előtt érdemes lehet az alábbi 2 sort beilleszteni a hosts file-ba, mert enélkül nekem nem működik:
+- Windowson: `C:\Windows\System32\drivers\etc\hosts`
+- Linux/MaxOS-en: `/etc/hosts`
+```
+127.0.0.1   bff1.localhost
+127.0.0.1   bff2.localhost
+```
+Ezzel lényegében a 2 bff-et különböző címeken lehet elérni, mert az azonos url nevek (különböző portok ellenére) összezavarták a Duende BFF Security Frameworkot

@@ -1,10 +1,7 @@
 using Duende.Bff.Yarp;
 using BffDemo.Bff2;
-using Duende.Bff;
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Yarp.ReverseProxy.Transforms;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -79,7 +76,6 @@ app.MapGet("/bff/login", async (HttpContext context) =>
 {
     if (context.User?.Identity?.IsAuthenticated != true)
     {
-        // Redirect back to root after successful login.
         var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4201" };
         await context.ChallengeAsync("oidc", properties);
     }

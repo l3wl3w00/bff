@@ -28,6 +28,16 @@ Az alábbi ábra szemlélteti azt a folyamatot, ami által a felhasználó mindk
 Az ábrában sorszámozva vannak a kérések, ezek olyan sorrendben hajtódnak végre. Az "1."-tal kezdődő sorszámmal rendelkező 
 kérések jelentik az első alkalmazás bejelentkezési folyamatának a részét, a "2."-tal kezdődőek pedig a másodikét.
 
+## Felhasználók
+
+A teszt felhasználók a Duende által biztosított templateből származnak. 2 ilyen Felhasználó van:
+- Alice
+  - user: alice
+  - pass: alice
+- Bob
+  - user: bob
+  - pass: bob
+
 ## Futtatás előtt
 Lokális futtatás előtt érdemes lehet az alábbi 2 sort beilleszteni a hosts file-ba, mert enélkül nekem nem működik:
 - Windowson: `C:\Windows\System32\drivers\etc\hosts`

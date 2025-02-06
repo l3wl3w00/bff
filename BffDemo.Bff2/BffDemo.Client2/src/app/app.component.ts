@@ -1,14 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {AuthService} from '../auth-service';
 import {NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
-interface UserInfo {
-  name: string;
-  claims: { type: string; value: string }[];
-}
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -18,11 +13,20 @@ interface UserInfo {
 })
 export class AppComponent {
   title = 'BffDemo.Client2';
-  user: UserInfo | null = null;
+  user: any;
   data: any;
-  constructor(private readonly authService: AuthService, private readonly http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
   ngOnInit(): void {
-    this.getUserInfo();
+    this.getUserInfo().subscribe({
+      next: (user) => {
+        this.user = user;
+      },
+      error: (err) => {
+        console.error('Not logged in or error fetching user:', err);
+        this.user = null;
+      }
+    });
+
     this.getData().subscribe({
       next: (data) => {
         this.data = data;
@@ -35,16 +39,7 @@ export class AppComponent {
   }
 
   getUserInfo() {
-    this.http.get<UserInfo>('https://bff2.localhost:5002/bff/user', { withCredentials: true })
-      .subscribe({
-        next: (user) => {
-          this.user = user;
-        },
-        error: (err) => {
-          console.error('Not logged in or error fetching user:', err);
-          this.user = null;
-        }
-      });
+    return this.http.get('https://bff2.localhost:5002/bff/user', { withCredentials: true })
   }
   getData() {
     const headers = new HttpHeaders({
@@ -56,10 +51,10 @@ export class AppComponent {
     });
   }
   onLogin(e: any) {
-    this.authService.login()
+    window.location.href = 'https://bff2.localhost:5002/bff/login';
   };
 
   onLogout(e: any) {
-    this.authService.logout();
+    window.location.href = 'https://bff2.localhost:5002/bff/logout';
   }
 }

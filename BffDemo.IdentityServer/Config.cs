@@ -10,28 +10,6 @@ public static class Config
     [
         new IdentityResources.OpenId(),
         new IdentityResources.Profile()
-        // {
-        //     Name = IdentityServerConstants.StandardScopes.Profile,
-        //     DisplayName = "User profile",
-        //     Description = "Your user profile information (first name, last name, etc.)",
-        //     Emphasize = true,
-        //     UserClaims = { 
-        //         JwtClaimTypes.Name,
-        //         JwtClaimTypes.FamilyName,
-        //         JwtClaimTypes.GivenName,
-        //         JwtClaimTypes.MiddleName,
-        //         JwtClaimTypes.NickName,
-        //         JwtClaimTypes.PreferredUserName,
-        //         JwtClaimTypes.Profile,
-        //         JwtClaimTypes.Picture,
-        //         JwtClaimTypes.WebSite,
-        //         JwtClaimTypes.Gender,
-        //         JwtClaimTypes.BirthDate,
-        //         JwtClaimTypes.ZoneInfo,
-        //         JwtClaimTypes.Locale,
-        //         JwtClaimTypes.UpdatedAt 
-        //     },
-        // },
     ];
 
     public static IEnumerable<ApiScope> ApiScopes { get; } = 

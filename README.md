@@ -13,10 +13,11 @@ amik párhuzamosan futnak, és kommunikálnak egymással:
   - `localhost:5001` és `localhost:5002` címeken futnak.
   - Ezen template alapján készültek: https://github.com/DuendeSoftware/IdentityServer.Templates/tree/main/src/BffRemoteApi
   - Kódjukban ezek is nagyon hasonlóak, azonban ezek is 2 teljesen független alkalmazásnak a BFF komponenseit szimulálják
+  - A kéréseket továbbítják a backend felé, pontosabban minden `localhost:5001/bff1/api1/[request]` vagy `localhost:5002/bff2/api2/[request]` címre érkező kérést továbbítanak a `localhost:6000/[request]` címre. Ez konfigurálható az `appsettings.json` file-ban. 
 - Identity Server
   - Ez maga az identity server, ami bejelentkezteti a felhasználókat, és szolgáltatja a tokeneket.
   - Ezen template alapján készült: https://github.com/DuendeSoftware/IdentityServer.Templates/tree/main/src/IdentityServerInMem
-  - `localhost:5000` címen fut 
+  - `localhost:5000` címen fut
 - Backend
   - Ez pedig egy egyszerű ASP.NET backend WEB API, amit mindkét alkalmazás authentikáltan hív
   - `localhost:6000` címen fut
@@ -37,13 +38,3 @@ A teszt felhasználók a Duende által biztosított templateből származnak. 2 
 - Bob
   - user: bob
   - pass: bob
-
-## Futtatás előtt
-Lokális futtatás előtt érdemes lehet az alábbi 2 sort beilleszteni a hosts file-ba, mert enélkül nekem nem működik:
-- Windowson: `C:\Windows\System32\drivers\etc\hosts`
-- Linux/MaxOS-en: `/etc/hosts`
-```
-127.0.0.1   bff1.localhost
-127.0.0.1   bff2.localhost
-```
-Ezzel lényegében a 2 bff-et különböző címeken lehet elérni, mert az azonos url nevek (különböző portok ellenére) összezavarták a Duende BFF Security Frameworkot

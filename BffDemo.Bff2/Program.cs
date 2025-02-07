@@ -28,7 +28,7 @@ builder.Services.AddAuthentication(options =>
     })
     .AddCookie("cookie", options =>
     {
-        options.Cookie.Name = "__Host-bff2";
+        options.Cookie.Name = "__Host-bff";
         options.Cookie.SameSite = SameSiteMode.None;
         options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     })

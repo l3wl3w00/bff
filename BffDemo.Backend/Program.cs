@@ -30,8 +30,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.MapGet("/email", (ClaimsPrincipal user) =>
+app.MapGet("/email", (ClaimsPrincipal user, HttpContext context) =>
     {
+        Console.WriteLine(context.Request.Headers.Authorization);
         var email = user.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
         return Results.Ok($"Logged in by {email}");
     })

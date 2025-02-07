@@ -39,22 +39,22 @@ export class AppComponent {
   }
 
   getUserInfo() {
-    return this.http.get('https://bff2.localhost:5002/bff/user', { withCredentials: true })
+    return this.http.get('https://localhost:5002/bff/user', { withCredentials: true })
   }
   getData() {
     const headers = new HttpHeaders({
       'X-CSRF': '1'
     });
-    return this.http.get('https://bff2.localhost:5002/api2/email', {
+    return this.http.get('https://localhost:5002/api2/email', {
       withCredentials: true,
       headers: headers
     });
   }
   onLogin(e: any) {
-    window.location.href = 'https://bff2.localhost:5002/bff/login';
+    window.location.href = 'https://localhost:5002/bff/login';
   };
 
   onLogout(e: any) {
-    window.location.href = 'https://bff2.localhost:5002/bff/logout';
+    window.location.href = 'https://localhost:5002/bff/logout';
   }
 }

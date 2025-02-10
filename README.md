@@ -38,3 +38,11 @@ A teszt felhasználók a Duende által biztosított templateből származnak. 2 
 - Bob
   - user: bob
   - pass: bob
+
+## Indítás
+
+A teljes folyamat szimulálásához mind a 6 komponenst külön-külön el kell indítani.
+- A BFF-eket, az Identity Servert és a Backend-et szokásos .NET projektként kell futtatni, IIS-ben
+- A két angular klienst az alábbi módon érdemes futtatni:
+  - Navigáljunk el a `BffDemo.Bff1/BffDemo.Client1` vagy a `BffDemo.Bff2/BffDemo.Client2` mappába,
+  - majd futtasuk az `npm start` parancsot

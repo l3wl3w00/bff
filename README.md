@@ -39,6 +39,17 @@ A teszt felhasználók a Duende által biztosított templateből származnak. 2 
   - user: bob
   - pass: bob
 
+## Futtatás előtt
+Lokális futtatás előtt érdemes lehet az alábbi 2 sort beilleszteni a hosts file-ba, mert enélkül nekem nem működik:
+- Windowson: `C:\Windows\System32\drivers\etc\hosts`
+- Linux/MaxOS-en: `/etc/hosts`
+```
+127.0.0.1   bff1.localhost
+127.0.0.1   bff2.localhost
+```
+Ezzel lényegében a 2 bff-et különböző címeken lehet elérni, mert az azonos url nevek (különböző portok ellenére) azt eredményezik,
+hogy mind2 cookie (`__Host-bff1` és `__Host-bff2`) egy helyen legyen tárolva, és ezáltal nem fognak beleférni a kérésbe, 431 errort fogunk kapni
+
 ## Indítás
 
 A teljes folyamat szimulálásához mind a 6 komponenst külön-külön el kell indítani.

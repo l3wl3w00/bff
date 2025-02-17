@@ -45,6 +45,9 @@ export class AppComponent {
     const iframe: any = document.querySelector('#bff-silent-login');
     iframe.src = 'https://localhost:5001/bff/silent-login';
     window.addEventListener("message", e => {
+      if (e.origin !== "https://localhost:5001") {
+        return;
+      }
       if (e.data && e.data.source === 'bff-silent-login' && e.data.isLoggedIn) {
            window.location.reload();
       }

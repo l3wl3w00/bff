@@ -24,7 +24,7 @@ public class ProfileService : IProfileService
         {
             return Task.CompletedTask;
         }
-        context.IssuedClaims = user.Claims.ToList();
+        context.IssuedClaims.AddRange(user.Claims.ToList());
         return Task.CompletedTask;
     }
 

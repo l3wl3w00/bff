@@ -43,8 +43,11 @@ export class AppComponent {
   }
   triggerSilentLogin(): void {
     const iframe: any = document.querySelector('#bff-silent-login');
-    iframe.src = 'https://localhost:5001/bff/silent-login';
+    iframe.src = 'https://localhost:5002/bff/silent-login';
     window.addEventListener("message", e => {
+      if (e.origin !== "https://localhost:5002") {
+        return;
+      }
       if (e.data && e.data.source === 'bff-silent-login' && e.data.isLoggedIn) {
         window.location.reload();
       }

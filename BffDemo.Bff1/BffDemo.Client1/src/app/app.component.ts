@@ -43,7 +43,7 @@ export class AppComponent {
   }
   triggerSilentLogin(): void {
     const iframe: any = document.querySelector('#bff-silent-login');
-    iframe.src = 'https://bff1.localhost:5001/bff/silent-login';
+    iframe.src = 'https://localhost:5001/bff/silent-login';
     window.addEventListener("message", e => {
       if (e.data && e.data.source === 'bff-silent-login' && e.data.isLoggedIn) {
            window.location.reload();
@@ -51,7 +51,7 @@ export class AppComponent {
     });
   }
   getUserInfo() {
-    return this.http.get('https://bff1.localhost:5001/bff/user', {
+    return this.http.get('https://localhost:5001/bff/user', {
       withCredentials: true,
       headers: new HttpHeaders({
         "X-CSRF": "1",
@@ -59,7 +59,7 @@ export class AppComponent {
     })
   }
   getData() {
-    return this.http.get('https://bff1.localhost:5001/api1/email', {
+    return this.http.get('https://localhost:5001/api1/email', {
       withCredentials: true,
       headers: new HttpHeaders({
         'X-CSRF': '1'
@@ -67,10 +67,10 @@ export class AppComponent {
     });
   }
   onLogin(e: any) {
-    window.location.href = 'https://bff1.localhost:5001/bff/login';
+    window.location.href = 'https://localhost:5001/bff/login?returnUrl=http://localhost:4200';
   };
 
   onLogout(e: any) {
-    window.location.href = `https://bff1.localhost:5001${this.getClaim("bff:logout_url")}&returnUrl=http://localhost:4200`
+    window.location.href = `https://localhost:5001${this.getClaim("bff:logout_url")}&returnUrl=http://localhost:4200`
   }
 }

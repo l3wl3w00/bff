@@ -2,7 +2,6 @@ using Duende.Bff.Yarp;
 using BffDemo.Bff2;
 using Duende.Bff;
 using IdentityModel;
-using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,35 +60,17 @@ builder.Services.AddAuthentication(options =>
         };
     });
 
-
 var app = builder.Build();
+
 app.UseCors("AllowAngular");
-
 app.UseDefaultFiles();
-app.UseStaticFiles();
 
+app.UseStaticFiles();
 app.UseAuthentication();
+
 app.UseBff();
 
-app.MapBffManagementUserEndpoint();
-app.MapBffManagementSilentLoginEndpoints();
-app.MapBffManagementBackchannelEndpoint();
-app.MapBffDiagnosticsEndpoint();
-app.MapBffManagementLogoutEndpoint();
-app.MapGet("/bff/login", async (HttpContext context) =>
-{
-    if (context.User?.Identity?.IsAuthenticated != true)
-    {
-        var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4201" };
-        await context.ChallengeAsync("oidc", properties);
-    }
-    else
-    {
-        context.Response.Redirect("/");
-    }
-});
-
-
+app.MapBffManagementEndpoints();
 
 foreach (var api in config.Apis)
 {
@@ -98,11 +79,3 @@ foreach (var api in config.Apis)
 }
 
 app.Run();
-
-public class AnyUrlValidator : IReturnUrlValidator
-{
-    public Task<bool> IsValidAsync(string returnUrl)
-    {
-        return Task.FromResult(!string.IsNullOrEmpty(returnUrl));
-    }
-}

@@ -3,8 +3,6 @@ using BffDemo.Bff1;
 using Duende.Bff;
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Yarp.ReverseProxy.Transforms;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,11 +16,16 @@ builder.Services.AddCors(options =>
             .AllowCredentials(); // Important for sending/receiving cookies.
     });
 });
-builder.Services.AddBff()
-    .AddRemoteApis();
+builder.Services
+    .AddBff(o =>
+    {
+        o.BackchannelLogoutAllUserSessions = true;
+    })
+    .AddRemoteApis()
+    .AddServerSideSessions();
 Configuration config = new();
 builder.Configuration.Bind("BFF", config);
-
+builder.Services.AddTransient<IReturnUrlValidator, AnyUrlValidator>();
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = "cookie";
@@ -47,13 +50,13 @@ builder.Services.AddAuthentication(options =>
         options.GetClaimsFromUserInfoEndpoint = true;
         options.MapInboundClaims = true;
         options.SaveTokens = true;
-
+        
         options.Scope.Clear();
         foreach (var scope in config.Scopes)
         {
             options.Scope.Add(scope);
         }
-
+        
         options.TokenValidationParameters = new()
         {
             NameClaimType = JwtClaimTypes.Name,
@@ -71,10 +74,11 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseBff();
 
+app.MapBffManagementUserEndpoint();
 app.MapBffManagementSilentLoginEndpoints();
 app.MapBffManagementBackchannelEndpoint();
 app.MapBffDiagnosticsEndpoint();
-
+app.MapBffManagementLogoutEndpoint();
 app.MapGet("/bff/login", async (HttpContext context) =>
 {
     if (context.User?.Identity?.IsAuthenticated != true)
@@ -88,27 +92,6 @@ app.MapGet("/bff/login", async (HttpContext context) =>
     }
 });
 
-app.MapGet("/bff/logout", async (HttpContext context) =>
-{
-    var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4200" };
-    await context.SignOutAsync("cookie", properties);
-    await context.SignOutAsync("oidc", properties);
-});
-app.MapGet("/bff/user", (HttpContext context) =>
-{
-    if (context.User?.Identity?.IsAuthenticated == true)
-    {
-        return Results.Ok(new
-        {
-            Name = context.User.Identity.Name,
-            Claims = context.User.Claims.Select(c => new { c.Type, c.Value })
-        });
-    }
-
-    return Results.Unauthorized();
-});
-
-
 foreach (var api in config.Apis)
 {
     app.MapRemoteBffApiEndpoint(api.LocalPath, api.RemoteUrl!)
@@ -116,3 +99,11 @@ foreach (var api in config.Apis)
 }
 
 app.Run();
+
+public class AnyUrlValidator : IReturnUrlValidator
+{
+    public Task<bool> IsValidAsync(string returnUrl)
+    {
+        return Task.FromResult(!string.IsNullOrEmpty(returnUrl));
+    }
+}

@@ -13,17 +13,18 @@ import {FormsModule} from '@angular/forms';
 })
 export class AppComponent {
   title = 'BffDemo.Client1';
-  user: any;
+  userClaims: any;
   data: any;
   constructor(private readonly http: HttpClient) {}
   ngOnInit(): void {
+    this.triggerSilentLogin();
     this.getUserInfo().subscribe({
-      next: (user) => {
-        this.user = user;
+      next: (claims) => {
+        this.userClaims = claims;
       },
       error: (err) => {
         console.error('Not logged in or error fetching user:', err);
-        this.user = null;
+        this.userClaims = null;
       }
     });
 
@@ -37,17 +38,32 @@ export class AppComponent {
       }
     });
   }
-
+  getClaim(claimType: string): string {
+    return this.userClaims.find((c: { type: string; }) => c.type === claimType).value;
+  }
+  triggerSilentLogin(): void {
+    const iframe: any = document.querySelector('#bff-silent-login');
+    iframe.src = 'https://bff1.localhost:5001/bff/silent-login';
+    window.addEventListener("message", e => {
+      if (e.data && e.data.source === 'bff-silent-login' && e.data.isLoggedIn) {
+           window.location.reload();
+      }
+    });
+  }
   getUserInfo() {
-    return this.http.get('https://bff1.localhost:5001/bff/user', { withCredentials: true })
+    return this.http.get('https://bff1.localhost:5001/bff/user', {
+      withCredentials: true,
+      headers: new HttpHeaders({
+        "X-CSRF": "1",
+      })
+    })
   }
   getData() {
-    const headers = new HttpHeaders({
-      'X-CSRF': '1'
-    });
     return this.http.get('https://bff1.localhost:5001/api1/email', {
       withCredentials: true,
-      headers: headers
+      headers: new HttpHeaders({
+        'X-CSRF': '1'
+      })
     });
   }
   onLogin(e: any) {
@@ -55,6 +71,6 @@ export class AppComponent {
   };
 
   onLogout(e: any) {
-    window.location.href = 'https://bff1.localhost:5001/bff/logout';
+    window.location.href = `https://bff1.localhost:5001${this.getClaim("bff:logout_url")}&returnUrl=http://localhost:4200`
   }
 }

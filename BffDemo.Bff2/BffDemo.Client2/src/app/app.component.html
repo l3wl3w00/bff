@@ -227,12 +227,13 @@
       </svg>
       <h1>Hello, {{ title }}</h1>
       <p>Congratulations! Your app is running. 🎉</p>
-      <div *ngIf="!user">
+      <iframe id="bff-silent-login" style="display: none"></iframe>
+      <div *ngIf="!userClaims">
         <p>You are not logged in.</p>
         <button id="LoginButton" (click)="onLogin($event)">Log in</button>
       </div>
-      <div *ngIf="user">
-        <p>Welcome, {{ user?.name }}!</p>
+      <div *ngIf="userClaims">
+        <p>Welcome, {{ getClaim("name") }}!</p>
         <button id="LogoutButton" (click)="onLogout($event)">Log out</button>
       </div>
       <div *ngIf="data">

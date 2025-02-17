@@ -1,5 +1,6 @@
 using Duende.Bff.Yarp;
 using BffDemo.Bff2;
+using Duende.Bff;
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
 
@@ -15,11 +16,13 @@ builder.Services.AddCors(options =>
             .AllowCredentials(); // Important for sending/receiving cookies.
     });
 });
-builder.Services.AddBff()
-    .AddRemoteApis();
+builder.Services    
+    .AddBff(o => o.BackchannelLogoutAllUserSessions = true)
+    .AddRemoteApis()
+    .AddServerSideSessions();
 Configuration config = new();
 builder.Configuration.Bind("BFF", config);
-
+builder.Services.AddTransient<IReturnUrlValidator, AnyUrlValidator>();
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = "cookie";
@@ -68,10 +71,11 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseBff();
 
+app.MapBffManagementUserEndpoint();
 app.MapBffManagementSilentLoginEndpoints();
 app.MapBffManagementBackchannelEndpoint();
 app.MapBffDiagnosticsEndpoint();
-
+app.MapBffManagementLogoutEndpoint();
 app.MapGet("/bff/login", async (HttpContext context) =>
 {
     if (context.User?.Identity?.IsAuthenticated != true)
@@ -85,25 +89,6 @@ app.MapGet("/bff/login", async (HttpContext context) =>
     }
 });
 
-app.MapGet("/bff/logout", async (HttpContext context) =>
-{
-    var properties = new AuthenticationProperties { RedirectUri = "http://localhost:4201" };
-    await context.SignOutAsync("cookie", properties);
-    await context.SignOutAsync("oidc", properties);
-});
-app.MapGet("/bff/user", (HttpContext context) =>
-{
-    if (context.User?.Identity?.IsAuthenticated == true)
-    {
-        return Results.Ok(new
-        {
-            Name = context.User.Identity.Name,
-            Claims = context.User.Claims.Select(c => new { c.Type, c.Value })
-        });
-    }
-
-    return Results.Unauthorized();
-});
 
 
 foreach (var api in config.Apis)
@@ -113,3 +98,11 @@ foreach (var api in config.Apis)
 }
 
 app.Run();
+
+public class AnyUrlValidator : IReturnUrlValidator
+{
+    public Task<bool> IsValidAsync(string returnUrl)
+    {
+        return Task.FromResult(!string.IsNullOrEmpty(returnUrl));
+    }
+}

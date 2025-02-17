@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BffDemo.Backend", "BffDemo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BffDemo.Bff2", "BffDemo.Bff2\BffDemo.Bff2.csproj", "{20D87554-02B5-4F84-A10D-F5C77904D9D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bff.NoBffApplication", "Bff.NoBffApplication\Bff.NoBffApplication.csproj", "{77EDD53B-784A-4F74-80C9-0D9420134634}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +32,9 @@ Global
 		{20D87554-02B5-4F84-A10D-F5C77904D9D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20D87554-02B5-4F84-A10D-F5C77904D9D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20D87554-02B5-4F84-A10D-F5C77904D9D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77EDD53B-784A-4F74-80C9-0D9420134634}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77EDD53B-784A-4F74-80C9-0D9420134634}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77EDD53B-784A-4F74-80C9-0D9420134634}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77EDD53B-784A-4F74-80C9-0D9420134634}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

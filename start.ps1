@@ -3,6 +3,9 @@
 Write-Host "Building .NET solution..."
 dotnet build .\BffDemo.sln
 
+Write-Host "`nStarting IdentityServer..."
+$processes += Start-Process "dotnet" -ArgumentList "run --launch-profile SelfHost" -WorkingDirectory ".\BffDemo.IdentityServer" -PassThru
+
 Write-Host "`nStarting the .NET Back End..."
 $processes += Start-Process "dotnet" -ArgumentList "run --launch-profile https" -WorkingDirectory ".\BffDemo.Backend" -PassThru
 
@@ -11,9 +14,6 @@ $processes += Start-Process "dotnet" -ArgumentList "run --launch-profile https" 
 
 Write-Host "`nStarting Bff2..."
 $processes += Start-Process "dotnet" -ArgumentList "run --launch-profile https" -WorkingDirectory ".\BffDemo.Bff2" -PassThru
-
-Write-Host "`nStarting IdentityServer..."
-$processes += Start-Process "dotnet" -ArgumentList "run --launch-profile SelfHost" -WorkingDirectory ".\BffDemo.IdentityServer" -PassThru
 
 Write-Host "`nStarting Angular Client1..."
 $processes += Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.Bff1\BffDemo.Client1" -PassThru

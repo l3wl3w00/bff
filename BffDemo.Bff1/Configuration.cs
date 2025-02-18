@@ -16,6 +16,8 @@ public class Configuration
     /// ./GenericBFF --BFF:ClientSecret=secret
     /// </summary>
     public string? ClientSecret { get; set; }
+    public string? ClientUrl { get; set; }
+    public string? ServerUrl { get; set; }
 
     public List<string> Scopes { get; set; } = new();
     public List<Api> Apis { get; set; } = new();

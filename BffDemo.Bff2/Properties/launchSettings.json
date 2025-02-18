@@ -1,10 +1,10 @@
 ﻿{
   "profiles": {
-    "https": {
+    "default": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
-      "applicationUrl": "https://localhost:5002",
+      "applicationUrl": "https://bff-server-2.test:5002",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

@@ -3,7 +3,8 @@ import { RouterOutlet } from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
-
+import serverLaunchSettings from '../../../Properties/launchSettings.json'
+import appsettings from '../../../appsettings.json'
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -15,6 +16,9 @@ export class AppComponent {
   title = 'BffDemo.Client1';
   userClaims: any;
   data: any;
+  bffUrl = serverLaunchSettings.profiles.default.applicationUrl
+  clientUrl = appsettings.BFF.ClientUrl
+
   constructor(private readonly http: HttpClient) {}
   ngOnInit(): void {
     this.triggerSilentLogin();
@@ -43,37 +47,37 @@ export class AppComponent {
   }
   triggerSilentLogin(): void {
     const iframe: any = document.querySelector('#bff-silent-login');
-    iframe.src = 'https://localhost:5001/bff/silent-login';
+    iframe.src = `${this.bffUrl}/bff/silent-login`;
     window.addEventListener("message", e => {
-      if (e.origin !== "https://localhost:5001") {
+      if (e.origin !== this.bffUrl) {
         return;
       }
       if (e.data && e.data.source === 'bff-silent-login' && e.data.isLoggedIn) {
-           window.location.reload();
+        window.location.reload();
       }
     });
   }
   getUserInfo() {
-    return this.http.get('https://localhost:5001/bff/user', {
+    return this.http.get(`${this.bffUrl}/bff/user`, {
       withCredentials: true,
       headers: new HttpHeaders({
         "X-CSRF": "1",
       })
-    })
+    });
   }
   getData() {
-    return this.http.get('https://localhost:5001/api1/email', {
+    return this.http.get(`${this.bffUrl}/api/email`, {
       withCredentials: true,
       headers: new HttpHeaders({
-        'X-CSRF': '1'
+        "X-CSRF": "1",
       })
     });
   }
   onLogin(e: any) {
-    window.location.href = 'https://localhost:5001/bff/login?returnUrl=http://localhost:4200';
+    window.location.href = `${this.bffUrl}/bff/login?returnUrl=${this.clientUrl}`;
   };
 
   onLogout(e: any) {
-    window.location.href = `https://localhost:5001${this.getClaim("bff:logout_url")}&returnUrl=http://localhost:4200`
+    window.location.href = `${this.bffUrl}${this.getClaim("bff:logout_url")}&returnUrl=${this.clientUrl}`
   }
 }

@@ -1,4 +1,4 @@
-﻿using BffDemo.IdentityServer;
+﻿ using BffDemo.IdentityServer;
 using Serilog;
 
 Log.Logger = new LoggerConfiguration()

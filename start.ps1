@@ -1,51 +1,118 @@
-﻿$processes = @()
+﻿# Global arrays to track processes
+$global:allProcesses = @()
+$global:dotnetProcesses = @()
 
-Write-Host "Building .NET solution..."
-dotnet build .\BffDemo.sln
+#--------------------------------------------------------------------
+function Build-Solution {
+    Write-Host "Building .NET solution..."
+    dotnet build .\BffDemo.sln
+}
 
-Write-Host "`nStarting IdentityServer..."
-$processes += Start-Process "dotnet" -ArgumentList "run --launch-profile SelfHost" -WorkingDirectory ".\BffDemo.IdentityServer" -PassThru
+#--------------------------------------------------------------------
+function Start-DotNetProcesses {
+    Write-Host "`nStarting IdentityServer..."
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile SelfHost" -WorkingDirectory ".\BffDemo.IdentityServer" -PassThru
 
-Write-Host "`nStarting the .NET Back End..."
-$processes += Start-Process "dotnet" -ArgumentList "run --launch-profile https" -WorkingDirectory ".\BffDemo.Backend" -PassThru
+    Write-Host "`nStarting the .NET Back End..."
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Backend" -PassThru
 
-Write-Host "`nStarting Bff1..."
-$processes += Start-Process "dotnet" -ArgumentList "run --launch-profile https" -WorkingDirectory ".\BffDemo.Bff1" -PassThru
+    Write-Host "`nStarting Bff1..."
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Bff1" -PassThru
 
-Write-Host "`nStarting Bff2..."
-$processes += Start-Process "dotnet" -ArgumentList "run --launch-profile https" -WorkingDirectory ".\BffDemo.Bff2" -PassThru
+    Write-Host "`nStarting Bff2..."
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Bff2" -PassThru
 
-Write-Host "`nStarting Angular Client1..."
-$processes += Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.Bff1\BffDemo.Client1" -PassThru
+    # Add .NET processes to the global process list
+    $global:allProcesses += $global:dotnetProcesses
+}
 
-Write-Host "`nStarting Angular Client2..."
-$processes += Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.Bff2\BffDemo.Client2" -PassThru
+#--------------------------------------------------------------------
+function Start-AngularClients {
+    Write-Host "`nStarting Angular Client1..."
+    $global:allProcesses += Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.Bff1\BffDemo.Client1" -PassThru
+
+    Write-Host "`nStarting Angular Client2..."
+    $global:allProcesses += Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.Bff2\BffDemo.Client2" -PassThru
+}
+
+#--------------------------------------------------------------------
+function Open-BrowserApps {
+    Write-Host "`nWaiting 3 seconds before opening the browser..."
+    Start-Sleep -Seconds 3
+
+    Write-Host "Opening Angular apps in the browser..."
+    Start-Process "cmd" -ArgumentList "/c start http://bff-client-1.test:4201"
+    Start-Process "cmd" -ArgumentList "/c start http://bff-client-2.test:4202"
+}
+
+#--------------------------------------------------------------------
+function Stop-AllProcesses {
+    Write-Host "Stopping all processes..."
+    $global:allProcesses | ForEach-Object {
+        try {
+            Stop-Process -Id $_.Id -ErrorAction SilentlyContinue
+        } catch {
+            # Ignore errors if process has already exited
+        }
+    }
+    Write-Host "All processes stopped."
+}
+
+#--------------------------------------------------------------------
+function Restart-DotNetProcesses {
+    Write-Host "Restarting .NET projects..."
+    # Stop current .NET processes
+    $global:dotnetProcesses | ForEach-Object {
+        try {
+            Stop-Process -Id $_.Id -ErrorAction SilentlyContinue
+        } catch {
+            # Ignore errors if process already exited
+        }
+    }
+    # Clear the .NET process list
+    $global:dotnetProcesses = @()
+
+    # Restart the .NET processes
+    Write-Host "`nRestarting IdentityServer..."
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile SelfHost" -WorkingDirectory ".\BffDemo.IdentityServer" -PassThru
+
+    Write-Host "`nRestarting the .NET Back End..."
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Backend" -PassThru
+
+    Write-Host "`nRestarting Bff1..."
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Bff1" -PassThru
+
+    Write-Host "`nRestarting Bff2..."
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Bff2" -PassThru
+
+    # Update the global process list with the restarted .NET processes
+    $global:allProcesses += $global:dotnetProcesses
+    Write-Host "Restarted all .NET projects."
+}
+
+#--------------------------------------------------------------------
+# Main Script Execution
+Build-Solution
+Start-DotNetProcesses
+Start-AngularClients
 
 Write-Host "`nAll processes have been started."
+Open-BrowserApps
 
-Write-Host "Waiting 3 seconds before opening the browser..."
-Start-Sleep -Seconds 3
-
-Write-Host "Opening Angular apps in the browser..."
-Start-Process "cmd" -ArgumentList "/c start http://localhost:4200"
-Start-Process "cmd" -ArgumentList "/c start http://localhost:4201"
-
-Write-Host "Type 'q' then press Enter to stop all processes."
+Write-Host "`nType 'q' then press Enter to stop all processes, or type 'r' to restart the .NET projects."
 
 while ($true) {
-    $userInput = Read-Host
-    if ($userInput -eq 'q') {
-        Write-Host "Stopping all processes..."
-        $processes | ForEach-Object {
-            try {
-                Stop-Process -Id $_.Id -ErrorAction SilentlyContinue
-            } catch {
-                # Ignore errors if a process has already exited
-            }
+    $userInput = Read-Host "Enter command (q to quit, r to restart .NET)"
+    switch ($userInput) {
+        'q' {
+            Stop-AllProcesses
+            break
         }
-        Write-Host "All processes stopped."
-        break
-    } else {
-        Write-Host "Type 'q' to stop all processes, or press Ctrl+C to cancel."
+        'r' {
+            Restart-DotNetProcesses
+        }
+        default {
+            Write-Host "Invalid input. Type 'q' to quit or 'r' to restart the .NET projects."
+        }
     }
 }

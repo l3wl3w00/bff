@@ -6,11 +6,16 @@ using Microsoft.AspNetCore.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
+Configuration config = new()
+{
+    ServerUrl = Environment.GetEnvironmentVariable("ASPNETCORE_URLS")?.Split(';')[0]!,
+};
+builder.Configuration.Bind("BFF", config);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngular", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
+        policy.WithOrigins(config.ClientUrl!)
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials(); // Important for sending/receiving cookies.
@@ -23,8 +28,6 @@ builder.Services
     })
     .AddRemoteApis()
     .AddServerSideSessions();
-Configuration config = new();
-builder.Configuration.Bind("BFF", config);
 builder.Services.AddTransient<IReturnUrlValidator, AnyUrlValidator>();
 builder.Services.AddAuthentication(options =>
     {
@@ -34,7 +37,7 @@ builder.Services.AddAuthentication(options =>
     })
     .AddCookie("cookie", options =>
     {
-        options.Cookie.Name = "__Host-bff1";
+        options.Cookie.Name = "__Host-bff";
         options.Cookie.SameSite = SameSiteMode.None;
         options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     })
@@ -80,5 +83,4 @@ foreach (var api in config.Apis)
     app.MapRemoteBffApiEndpoint(api.LocalPath, api.RemoteUrl!)
         .RequireAccessToken(api.RequiredToken);
 }
-
 app.Run();

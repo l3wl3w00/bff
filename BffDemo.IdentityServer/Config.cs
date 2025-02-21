@@ -7,7 +7,11 @@ namespace BffDemo.IdentityServer;
 public static class Config
 {
     public static string Bff1Url => "https://bff-server-1.test:5001";
-    public static string Bff2Url => "https://bff-server-2.test:5002"; 
+    public static string Bff2Url => "https://bff-server-2.test:5002";
+    
+    public static string Bff1UrlLocalhost => "https://localhost:5001";
+    public static string Bff2UrlLocalhost => "https://localhost:5002";
+    
     public static string NoClientBffUrl => "http://localhost:4203"; 
     public static IEnumerable<IdentityResource> IdentityResources { get; } =
     [
@@ -19,7 +23,6 @@ public static class Config
     [
         new("api1"),
         new("api2"),
-        new("no_bff"),
     ];
 
     public static IEnumerable<Client> Clients { get; } =
@@ -31,7 +34,7 @@ public static class Config
             AllowedGrantTypes = GrantTypes.Code,
             RedirectUris = { $"{Bff1Url}/signin-oidc" },
             PostLogoutRedirectUris = { $"{Bff1Url}/signout-callback-oidc" },
-            BackChannelLogoutUri = $"{Bff1Url}/bff/backchannel",
+            BackChannelLogoutUri = $"{Bff1UrlLocalhost}/bff/backchannel",
             BackChannelLogoutSessionRequired = true,
             ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
             AllowedScopes = { "openid", "profile", "api1" },
@@ -46,7 +49,7 @@ public static class Config
             ClientName = "BFF2 IS Client",
             RedirectUris = { $"{Bff2Url}/signin-oidc" },
             PostLogoutRedirectUris = { $"{Bff2Url}/signout-callback-oidc" },
-            BackChannelLogoutUri = $"{Bff2Url}/bff/backchannel",
+            BackChannelLogoutUri = $"{Bff2UrlLocalhost}/bff/backchannel",
             BackChannelLogoutSessionRequired = true,
             AllowedScopes = { "openid", "profile", "api2" }, 
             AllowedGrantTypes = GrantTypes.Code,

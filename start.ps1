@@ -21,6 +21,9 @@ function Start-DotNetProcesses {
 
     Write-Host "`nStarting Bff2..."
     $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Bff2" -PassThru
+    
+    Write-Host "`nStarting NoBffApp..."
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.NoBffApplication" -PassThru
 
     # Add .NET processes to the global process list
     $global:allProcesses += $global:dotnetProcesses
@@ -28,11 +31,14 @@ function Start-DotNetProcesses {
 
 #--------------------------------------------------------------------
 function Start-AngularClients {
-    Write-Host "`nStarting Angular Client1..."
+    Write-Host "`nStarting Bff Angular Client1..."
     $global:allProcesses += Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.Bff1\BffDemo.Client1" -PassThru
 
-    Write-Host "`nStarting Angular Client2..."
+    Write-Host "`nStarting Bff Angular Client2..."
     $global:allProcesses += Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.Bff2\BffDemo.Client2" -PassThru
+
+    Write-Host "`nStarting No Bff Angular Client..."
+    $global:allProcesses += Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.NoBffApplication\BffDemo.NoBffClient" -PassThru
 }
 
 #--------------------------------------------------------------------
@@ -72,21 +78,7 @@ function Restart-DotNetProcesses {
     # Clear the .NET process list
     $global:dotnetProcesses = @()
 
-    # Restart the .NET processes
-    Write-Host "`nRestarting IdentityServer..."
-    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile SelfHost" -WorkingDirectory ".\BffDemo.IdentityServer" -PassThru
-
-    Write-Host "`nRestarting the .NET Back End..."
-    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Backend" -PassThru
-
-    Write-Host "`nRestarting Bff1..."
-    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Bff1" -PassThru
-
-    Write-Host "`nRestarting Bff2..."
-    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Bff2" -PassThru
-
-    # Update the global process list with the restarted .NET processes
-    $global:allProcesses += $global:dotnetProcesses
+    Start-DotNetProcesses
     Write-Host "Restarted all .NET projects."
 }
 
@@ -100,13 +92,13 @@ Write-Host "`nAll processes have been started."
 Open-BrowserApps
 
 Write-Host "`nType 'q' then press Enter to stop all processes, or type 'r' to restart the .NET projects."
-
-while ($true) {
+$running = $true
+while ($running) {
     $userInput = Read-Host "Enter command (q to quit, r to restart .NET)"
     switch ($userInput) {
         'q' {
             Stop-AllProcesses
-            break
+            $running = $false
         }
         'r' {
             Restart-DotNetProcesses

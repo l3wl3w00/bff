@@ -8,7 +8,7 @@ public static class Config
 {
     public static string Bff1Url => "https://bff-server-1.test:5001";
     public static string Bff2Url => "https://bff-server-2.test:5002"; 
-    public static string NoClientBffUrl => "https://no-bff-client.test:4203"; 
+    public static string NoClientBffUrl => "http://localhost:4203"; 
     public static IEnumerable<IdentityResource> IdentityResources { get; } =
     [
         new IdentityResources.OpenId(),
@@ -56,9 +56,9 @@ public static class Config
         new()
         {
             ClientId = "no_bff",
-            ClientSecrets = { new Secret("no-bff-secret".Sha256()) },
+            RequireClientSecret = false,
             ClientName = "No BFF IS Client",
-            RedirectUris = { $"{NoClientBffUrl}/signin-oidc" },
+            RedirectUris = { NoClientBffUrl },
             PostLogoutRedirectUris = { $"{NoClientBffUrl}/signout-callback-oidc" },
             BackChannelLogoutUri = $"{NoClientBffUrl}/bff/backchannel",
             BackChannelLogoutSessionRequired = true,
@@ -66,6 +66,7 @@ public static class Config
             AllowedGrantTypes = GrantTypes.Code,
             AccessTokenType = AccessTokenType.Jwt,
             AlwaysIncludeUserClaimsInIdToken = true,
+            AllowedCorsOrigins = { NoClientBffUrl } 
         }
     ];
 }

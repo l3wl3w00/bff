@@ -1,6 +1,15 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
+import {provideOAuthClient} from 'angular-oauth2-oidc';
+import {provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
+import {provideZoneChangeDetection} from '@angular/core';
+import {provideRouter} from '@angular/router';
+import {routes} from './app/app.routes';
 
-bootstrapApplication(AppComponent, appConfig)
-  .catch((err) => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideOAuthClient(),
+    provideHttpClient(withInterceptorsFromDi()),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes)]
+}).catch((err) => console.error(err));

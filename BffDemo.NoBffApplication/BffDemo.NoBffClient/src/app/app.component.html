@@ -225,8 +225,21 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <div style="text-align: center; margin-top: 2rem;">
+        <h1>{{ title }}</h1>
+        <div *ngIf="jwtToken; else notLoggedIn">
+          <p>You're logged in</p>
+          <p><strong>JWT Token:</strong> {{ jwtToken }}</p>
+        </div>
+        <ng-template #notLoggedIn>
+          <p>You aren't logged in</p>
+        </ng-template>
+        <div style="margin-top: 1rem;">
+          <button (click)="login()">Login</button>
+          <button (click)="logout()">Logout</button>
+        </div>
+      </div>
+
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">

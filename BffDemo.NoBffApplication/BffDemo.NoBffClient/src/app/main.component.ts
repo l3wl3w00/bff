@@ -9,21 +9,23 @@ import {JsonPipe, NgIf} from '@angular/common';
   template: `
     <main class="main">
       <div class="content">
-        <div style="text-align: center; margin-top: 2rem;">
-          <div *ngIf="jwtToken">
-            <p style="text-align: center;">You’re logged in</p>
-            <h2>Decoded JWT:</h2>
-            <pre style="text-align: left;"><code>{{ decodedToken | json }}</code></pre>
-            <div style="text-align: center;">
-              <button (click)="logout()">Log out</button>
+        <div class="left-side">
+          <div style="text-align: center; margin-top: 2rem;">
+            <div *ngIf="jwtToken">
+              <p style="text-align: center;">You’re logged in</p>
+              <h2>Decoded JWT:</h2>
+              <pre style="text-align: left;"><code>{{ decodedToken | json }}</code></pre>
+              <div style="text-align: center;">
+                <button (click)="logout()">Log out</button>
+              </div>
             </div>
-          </div>
-          <div *ngIf="jwtToken === null" style="text-align: center;">
-            <p>Loading...</p>
-          </div>
-          <div *ngIf="jwtToken === ''" style="text-align: center;">
-            <p>You aren’t logged in</p>
-            <button (click)="login()">Log in</button>
+            <div *ngIf="jwtToken === null" style="text-align: center;">
+              <p>Loading...</p>
+            </div>
+            <div *ngIf="jwtToken === ''" style="text-align: center;">
+              <p>You aren’t logged in</p>
+              <button (click)="login()">Log in</button>
+            </div>
           </div>
         </div>
       </div>
@@ -38,22 +40,38 @@ export class MainPageComponent {
   constructor(
     private readonly oauthService: OAuthService
   ) {
-    this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
+    this.oauthService.loadDiscoveryDocumentAndTryLogin().then(x => {
       if (this.oauthService.hasValidAccessToken()) {
         this.jwtToken = this.oauthService.getAccessToken();
         this.decodedToken = this.decodeJwt(this.jwtToken);
         console.log('JWT token stored:', this.jwtToken);
       } else {
         this.jwtToken = '';
+        console.log('invalid access token: ', this.oauthService.getAccessToken(), x);
       }
-    });
-
-    window.addEventListener('storage', (event) => {
-      if (event.key === 'logout' && event.newValue) {
-        console.log('Global logout triggered.');
-        this.handleGlobalLogout();
-      }
-    });
+      this.oauthService.silentRefresh().then(
+        info => {
+          console.log('Silent refresh succeeded', info);
+          if (this.oauthService.hasValidAccessToken()) {
+            this.jwtToken = this.oauthService.getAccessToken();
+            this.decodedToken = this.decodeJwt(this.jwtToken);
+            console.log('JWT token stored:', this.jwtToken);
+          } else {
+            this.jwtToken = '';
+            console.log('invalid access token: ', this.oauthService.getAccessToken(), x);
+          }
+        },
+        err => {
+          console.error('Silent refresh failed', err);
+          this.jwtToken = '';
+      });
+    })
+    //  window.addEventListener('storage', (event) => {
+    //   if (event.key === 'logout' && event.newValue) {
+    //     console.log('Global logout triggered.');
+    //     this.handleGlobalLogout();
+    //   }
+    // });
   }
 
   decodeJwt(token: string): any {
@@ -71,9 +89,10 @@ export class MainPageComponent {
   }
 
   logout(): void {
-    this.oauthService.logOut();
-    this.jwtToken = '';
-    this.decodedToken = {};
+    this.oauthService.revokeTokenAndLogout().then(_ => {
+      this.jwtToken = '';
+      this.decodedToken = {};
+    });
   }
 
   handleGlobalLogout(): void {

@@ -6,7 +6,10 @@
 </head>
   <body>
     <script>
-      window.parent.postMessage(window.location.hash, window.location.origin);
+      (window.parent || window.opener).postMessage(
+        location.hash || '#' + location.search,
+        location.origin
+      );
     </script>
   </body>
 </html>

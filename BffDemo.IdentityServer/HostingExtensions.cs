@@ -41,7 +41,11 @@ internal static class HostingExtensions
         //builder.Services.Configure<RazorPagesOptions>(options =>
         //    options.Conventions.AuthorizeFolder("/ServerSideSessions", "admin"));
 
-
+        builder.Services.AddCors(o =>
+            o.AddDefaultPolicy(p => p
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()));
         builder.Services.AddAuthentication()
             // .AddGoogle(options =>
             // {

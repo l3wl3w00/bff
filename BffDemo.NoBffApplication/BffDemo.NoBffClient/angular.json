@@ -24,7 +24,8 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/public/silent-refresh.html"
             ],
             "styles": [
               "src/styles.css"

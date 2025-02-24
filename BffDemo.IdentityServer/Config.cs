@@ -48,7 +48,7 @@ public static class Config
             ClientId = "bff2",
             ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
             ClientName = "BFF2 IS Client",
-            RedirectUris = { $"{Bff2Url}/signin-oidc" },
+            RedirectUris = { $"{Bff2Url}/signin-oidc"},
             PostLogoutRedirectUris = { $"{Bff2Url}" },
             BackChannelLogoutUri = $"{Bff2UrlLocalhost}/bff/backchannel",
             BackChannelLogoutSessionRequired = true,
@@ -62,15 +62,17 @@ public static class Config
             ClientId = "no_bff",
             RequireClientSecret = false,
             ClientName = "No BFF IS Client",
-            RedirectUris = { $"{NoClientBffUrl}/main-page" },
+            RedirectUris = { $"{NoClientBffUrl}/main-page", $"{NoClientBffUrl}/silent-refresh.html"  },
             FrontChannelLogoutUri = $"{NoClientBffUrl}/signout-oidc",
             PostLogoutRedirectUris = { $"{NoClientBffUrl}/main-page" },
             ClientSecrets = { new Secret("no-bff-secret".Sha256()) },
             BackChannelLogoutSessionRequired = true,
-            AllowedScopes = { "openid", "profile", "no_bff" }, 
+            AllowedScopes = { "openid", "profile", "no_bff", "offline_access" }, 
             AllowedGrantTypes = GrantTypes.Code,
             AccessTokenType = AccessTokenType.Jwt,
             AlwaysIncludeUserClaimsInIdToken = true,
+            AllowAccessTokensViaBrowser = true,
+            AllowOfflineAccess = true,
             AllowedCorsOrigins = { NoClientBffUrl } 
         }
     ];

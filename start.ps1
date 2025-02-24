@@ -49,6 +49,7 @@ function Open-BrowserApps {
     Write-Host "Opening Angular apps in the browser..."
     Start-Process "cmd" -ArgumentList "/c start http://bff-client-1.test:4201"
     Start-Process "cmd" -ArgumentList "/c start http://bff-client-2.test:4202"
+    Start-Process "cmd" -ArgumentList "/c start http://localhost:4203"
 }
 
 #--------------------------------------------------------------------

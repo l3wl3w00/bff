@@ -42,7 +42,7 @@ A teszt felhasználók a Duende által biztosított templateből származnak. 2 
   - pass: bob
 
 ## Futtatás előtt
-Lokális futtatás előtt érdemes lehet az alábbi 2 sort beilleszteni a hosts file-ba, mert enélkül nekem nem működik:
+Lokális futtatás előtt érdemes lehet az alábbi 4 sort beilleszteni a hosts file-ba, mert enélkül nekem nem működik:
 - Windowson: `C:\Windows\System32\drivers\etc\hosts`
 - Linux/MaxOS-en: `/etc/hosts`
 ```

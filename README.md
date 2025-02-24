@@ -2,15 +2,17 @@
 Ez a demo a BFF és az SSO együttes működését mutatja be.
 
 ## Komponensek
-Ez a demo 2 különböző alkalmazást szimulál, és összesen 6 különböző alkalmazás-komponensből áll, 
+Ez a demo 3 különböző alkalmazást szimulál, és összesen 8 különböző alkalmazás-komponensből áll, 
 amik párhuzamosan futnak, és kommunikálnak egymással:
-- Kliens 1 és Kliens 2
-  - A `BffDemo.Bff1/BffDemo.Client1` és a `BffDemo.Bff2/BffDemo.Client2` mappa alatt találhatók
-  - Ez 2 angular kliens, az előbbi a `localhost:4200` az utóbbi pedig a `localhost:4201` címen. 
-  - Habár jelen esetben kódjukban szinte azonsak, ezek 2 teljesen független alkalmazásnak a klienseit szimulálják. 
+- Kliensek
+  - A `BffDemo.Bff1/BffDemo.Client1` és a `BffDemo.Bff2/BffDemo.Client2` mappa alatt találhatók a BFF kliensek
+  - A `BffDemo.NoBffApplication/BffDemo.NoBffClient` mappa alatt található a BFF nélüli kliens
+  - Ezek angular kliensek
+  - A `bff-client-1.test:4201` és a `bff-client-2.test:4202` címen vannak a BFF kliensek és `localhost:4203` címen található a BFF nélküli app kliense. 
+  - Habár jelen esetben kódjukban szinte azonsak, ezek teljesen független alkalmazásnak a klienseit szimulálják. 
 - BFF 1 és BFF 2:
-  - Ezek a BFF komponensei a 2 alkalmazásnak.
-  - `localhost:5001` és `localhost:5002` címeken futnak.
+  - Ezek a BFF komponensei a 2 BFF alkalmazásnak.
+  - `bff-server-1.test:5001` és `bff-server-2.test:5002` címeken futnak.
   - Ezen template alapján készültek: https://github.com/DuendeSoftware/IdentityServer.Templates/tree/main/src/BffRemoteApi
   - Kódjukban ezek is nagyon hasonlóak, azonban ezek is 2 teljesen független alkalmazásnak a BFF komponenseit szimulálják
   - A kéréseket továbbítják a backend felé, pontosabban minden `localhost:5001/bff1/api1/[request]` vagy `localhost:5002/bff2/api2/[request]` címre érkező kérést továbbítanak a `localhost:6000/[request]` címre. Ez konfigurálható az `appsettings.json` file-ban. 
@@ -44,17 +46,26 @@ Lokális futtatás előtt érdemes lehet az alábbi 2 sort beilleszteni a hosts 
 - Windowson: `C:\Windows\System32\drivers\etc\hosts`
 - Linux/MaxOS-en: `/etc/hosts`
 ```
-127.0.0.1   bff1.localhost
-127.0.0.1   bff2.localhost
+127.0.0.1   bff-server-1.test
+127.0.0.1   bff-server-2.test
+127.0.0.1   bff-client-1.test
+127.0.0.1   bff-client-2.test
 ```
-Ezzel lényegében a 2 bff-et különböző címeken lehet elérni, mert az azonos url nevek (különböző portok ellenére) azt eredményezik,
-hogy mind2 cookie (`__Host-bff1` és `__Host-bff2`) egy helyen legyen tárolva, és ezáltal nem fognak beleférni a kérésbe, 431 errort fogunk kapni
+Ezzel lényegében minden kliens és server külön domainen fut, és ezért élethűbben szimulálja a valóságot
 
 ## Indítás
+A legelső indítás előtt:
+- Navigáljunk el a `BffDemo.NoBffApplication/BffDemo.NoBffClient` mappába, és futtassuk az `npm install` parancsot
+  
+Készült egy script, ami automatizálja az indítást, ez a gyökér mappában a `start.ps1` című file. Ezt a scriptet futtatva elindul minden szükséges alkalmazás.
+Az alkalmazások elindítása után a script user inputot vár a terminálba, ami 2 féle lehet:
+- 'q' betű beütése után minden futó alkalmazást bezár
+- 'r' betű leütése után a .NET alkalmazásokat újraindítja (az angularokat nem kell, mert azok maguktól frissülnek)
 
-A teljes folyamat szimulálásához mind a 6 komponenst külön-külön el kell indítani.
+A teljes folyamat szimulálásához mind a 8 komponenst külön-külön el kell indítani.
 - A BFF-eket, az Identity Servert és a Backend-et szokásos .NET projektként kell futtatni
   - Visual Studioban jobb klikk a projektre -> Debug -> Start New Instance
 - A két angular klienst az alábbi módon érdemes futtatni:
-  - Navigáljunk el a `BffDemo.Bff1/BffDemo.Client1` vagy a `BffDemo.Bff2/BffDemo.Client2` mappába,
+  - Navigáljunk el a `BffDemo.Bff1/BffDemo.Client1`, a `BffDemo.Bff2/BffDemo.Client2` vagy a `BffDemo.NoBffApplication/BffDemo.NoBffClient` mappába,
   - majd futtasuk az `npm start` parancsot
+

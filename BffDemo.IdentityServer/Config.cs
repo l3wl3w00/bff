@@ -23,6 +23,7 @@ public static class Config
     [
         new("api1"),
         new("api2"),
+        new("no_bff"),
     ];
 
     public static IEnumerable<Client> Clients { get; } =
@@ -33,7 +34,7 @@ public static class Config
             ClientName = "BFF1 IS Client",
             AllowedGrantTypes = GrantTypes.Code,
             RedirectUris = { $"{Bff1Url}/signin-oidc" },
-            PostLogoutRedirectUris = { $"{Bff1Url}/signout-callback-oidc" },
+            PostLogoutRedirectUris = { $"{Bff1Url}" },
             BackChannelLogoutUri = $"{Bff1UrlLocalhost}/bff/backchannel",
             BackChannelLogoutSessionRequired = true,
             ClientSecrets = { new Secret("511536EF-F270-4058-80CA-1C89C192F69A".Sha256()) },
@@ -48,7 +49,7 @@ public static class Config
             ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
             ClientName = "BFF2 IS Client",
             RedirectUris = { $"{Bff2Url}/signin-oidc" },
-            PostLogoutRedirectUris = { $"{Bff2Url}/signout-callback-oidc" },
+            PostLogoutRedirectUris = { $"{Bff2Url}" },
             BackChannelLogoutUri = $"{Bff2UrlLocalhost}/bff/backchannel",
             BackChannelLogoutSessionRequired = true,
             AllowedScopes = { "openid", "profile", "api2" }, 
@@ -61,9 +62,10 @@ public static class Config
             ClientId = "no_bff",
             RequireClientSecret = false,
             ClientName = "No BFF IS Client",
-            RedirectUris = { NoClientBffUrl },
-            PostLogoutRedirectUris = { $"{NoClientBffUrl}/signout-callback-oidc" },
-            BackChannelLogoutUri = $"{NoClientBffUrl}/bff/backchannel",
+            RedirectUris = { $"{NoClientBffUrl}/main-page" },
+            FrontChannelLogoutUri = $"{NoClientBffUrl}/signout-oidc",
+            PostLogoutRedirectUris = { $"{NoClientBffUrl}/main-page" },
+            ClientSecrets = { new Secret("no-bff-secret".Sha256()) },
             BackChannelLogoutSessionRequired = true,
             AllowedScopes = { "openid", "profile", "no_bff" }, 
             AllowedGrantTypes = GrantTypes.Code,

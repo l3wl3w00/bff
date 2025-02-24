@@ -8,8 +8,31 @@ import appsettings from '../../../appsettings.json'
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NgIf, NgIf, FormsModule, NgIf],
-  templateUrl: './app.component.html',
+  imports: [RouterOutlet, NgIf, NgIf, FormsModule, NgIf, NgIf, RouterOutlet, NgIf],
+  template: `
+    <main class="main">
+      <div class="content">
+        <div class="left-side">
+          <h1>{{ title }}</h1>
+          <iframe id="bff-silent-login" style="display: none"></iframe>
+          <div *ngIf="userClaims && userClaims.length === 0">
+            <p>You are not logged in.</p>
+            <button id="LoginButton" (click)="onLogin($event)">Log in</button>
+          </div>
+          <div *ngIf="userClaims && userClaims?.length !== 0;">
+            <p>Welcome, {{ getClaim("name") }}!</p>
+            <button id="LogoutButton" (click)="onLogout($event)">Log out</button>
+          </div>
+          <div *ngIf="!userClaims">
+            <p>Loading...</p>
+          </div>
+          <div *ngIf="data">
+            <p>{{data}}</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  `,
   styleUrl: './app.component.css'
 })
 export class AppComponent {
@@ -28,7 +51,7 @@ export class AppComponent {
       },
       error: (err) => {
         console.error('Not logged in or error fetching user:', err);
-        this.userClaims = null;
+        this.userClaims = [];
       }
     });
 
@@ -48,11 +71,14 @@ export class AppComponent {
   triggerSilentLogin(): void {
     const iframe: any = document.querySelector('#bff-silent-login');
     iframe.src = `${this.bffUrl}/bff/silent-login`;
-    window.addEventListener("message", e => {
+    window.parent.addEventListener("message", e => {
+      console.log("message");
+
       if (e.origin !== this.bffUrl) {
         return;
       }
       if (e.data && e.data.source === 'bff-silent-login' && e.data.isLoggedIn) {
+        console.log("reload");
         window.location.reload();
       }
     });

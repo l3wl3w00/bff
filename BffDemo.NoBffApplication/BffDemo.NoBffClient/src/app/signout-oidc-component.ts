@@ -13,10 +13,13 @@ import {Router} from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class SignoutOidcComponent implements OnInit {
-  constructor(private readonly oauthService: OAuthService, private readonly router: Router) {}
+  constructor(private readonly oauthService: OAuthService) {}
   ngOnInit() {
     this.oauthService.revokeTokenAndLogout()
-      .then(r => this.router.navigate(['/main-page']))
+      .then(r => {
+        this.oauthService.logOut();
+        console.log('Signed out');
+      })
       .catch(err => console.error(err));
   }
 }

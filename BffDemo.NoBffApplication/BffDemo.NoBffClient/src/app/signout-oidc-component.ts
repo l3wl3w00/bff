@@ -15,11 +15,21 @@ import {Router} from '@angular/router';
 export class SignoutOidcComponent implements OnInit {
   constructor(private readonly oauthService: OAuthService) {}
   ngOnInit() {
-    this.oauthService.revokeTokenAndLogout()
-      .then(r => {
-        this.oauthService.logOut();
-        console.log('Signed out');
-      })
-      .catch(err => console.error(err));
+    console.log('Logging out...');
+    if (document.requestStorageAccess) {
+      document.requestStorageAccess()
+        .then(() => {
+          console.log('Storage access granted');
+          this.oauthService.revokeTokenAndLogout()
+            .then(() => console.log('Logged out'))
+            .catch(e => console.error(e));
+        })
+        .catch(err => console.error('Storage access denied', err));
+    } else {
+      console.warn('Storage Access API not supported');
+      this.oauthService.revokeTokenAndLogout()
+        .then(() => console.log('Logged out'))
+        .catch(e => console.error(e));
+    }
   }
 }

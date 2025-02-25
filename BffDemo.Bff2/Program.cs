@@ -21,11 +21,11 @@ builder.Services.AddCors(options =>
     });
 });
 builder.Services    
-    .AddBff(o => o.BackchannelLogoutAllUserSessions = true)
+    .AddBff()
     .AddRemoteApis()
     .AddServerSideSessions();
-
 builder.Services.AddTransient<IReturnUrlValidator, AnyUrlValidator>();
+builder.Services.AddTransient<ISilentLoginCallbackService, MySilentLoginCallbackService>();
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = "cookie";

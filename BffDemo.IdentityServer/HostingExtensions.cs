@@ -73,7 +73,9 @@ internal static class HostingExtensions
         app.UseStaticFiles();
         app.UseRouting();
         app.UseCors("AllowAngularClient");
-
+        
+        app.UseMiddleware<SecurityHeadersMiddleware>();
+        
         app.UseIdentityServer();
         app.UseAuthorization();
         

@@ -58,20 +58,16 @@ export class MainPageComponent {
             console.log('JWT token stored:', this.jwtToken);
           } else {
             this.jwtToken = '';
+            sessionStorage.clear();
             console.log('invalid access token: ', this.oauthService.getAccessToken(), x);
           }
         },
         err => {
           console.error('Silent refresh failed', err);
           this.jwtToken = '';
-      });
+          sessionStorage.clear();
+        });
     })
-    //  window.addEventListener('storage', (event) => {
-    //   if (event.key === 'logout' && event.newValue) {
-    //     console.log('Global logout triggered.');
-    //     this.handleGlobalLogout();
-    //   }
-    // });
   }
 
   decodeJwt(token: string): any {

@@ -24,11 +24,13 @@ public sealed class SecurityHeadersAttribute : ActionFilterAttribute
             // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
             if (!context.HttpContext.Response.Headers.ContainsKey("X-Frame-Options"))
             {
-                context.HttpContext.Response.Headers.Append("X-Frame-Options", "DENY");
+                context.HttpContext.Response.Headers.Append("X-Frame-Options", "SAMEORIGIN");
             }
 
             // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
-            var csp = "default-src 'self'; object-src 'none'; frame-ancestors 'none'; sandbox allow-forms allow-same-origin allow-scripts; base-uri 'self';";
+            var csp = "default-src 'self'; object-src 'none'; frame-ancestors 'none'; " +
+                      "sandbox allow-forms allow-same-origin allow-scripts; base-uri 'self'; " +
+                      "frame-src http://localhost:4203 https://localhost:5000;";
             // also consider adding upgrade-insecure-requests once you have HTTPS in place for production
             //csp += "upgrade-insecure-requests;";
             // also an example if you need client images to be displayed from twitter

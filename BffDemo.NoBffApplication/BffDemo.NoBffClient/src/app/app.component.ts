@@ -35,6 +35,5 @@ export class AppComponent implements OnInit{
   constructor(private readonly oauthService: OAuthService) {}
   ngOnInit(): void {
     this.oauthService.configure(authConfig);
-    this.oauthService.setStorage(localStorage);
   }
 }

@@ -47,6 +47,14 @@ export class MainPageComponent {
     this.oauthService.loadDiscoveryDocumentAndTryLogin()
       .then(_ => {
         console.log('Discovery document loaded');
+        if (this.oauthService.hasValidAccessToken()) {
+          this.jwtToken = this.oauthService.getAccessToken();
+          this.decodedToken = this.decodeJwt(this.jwtToken);
+          console.log('JWT token stored:', this.jwtToken);
+        } else {
+          this.jwtToken = '';
+          console.log('Invalid access token:', this.oauthService.getAccessToken());
+        }
       })
       .catch(err => {
         console.error('Discovery document loading failed:', err);

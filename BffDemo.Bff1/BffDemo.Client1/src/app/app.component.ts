@@ -69,8 +69,6 @@ export class AppComponent {
     return this.userClaims.find((c: { type: string; }) => c.type === claimType).value;
   }
   triggerSilentLogin(): void {
-    const iframe: any = document.querySelector('#bff-silent-login');
-    iframe.src = `${this.bffUrl}/bff/silent-login`;
     window.parent.addEventListener("message", e => {
       console.log("message");
 
@@ -79,10 +77,16 @@ export class AppComponent {
       }
       if (e.data && e.data.source === 'bff-silent-login' && e.data.isLoggedIn) {
         console.log("reload");
-        window.location.reload();
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('reload') === null) {
+          window.location.href = window.location.href + "?reload=0";
+        }
       }
     });
+    const iframe: any = document.querySelector('#bff-silent-login');
+    iframe.src = `${this.bffUrl}/bff/silent-login`;
   }
+
   getUserInfo() {
     return this.http.get(`${this.bffUrl}/bff/user`, {
       withCredentials: true,

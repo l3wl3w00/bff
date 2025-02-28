@@ -13,6 +13,7 @@ public static class Config
     public static string Bff2UrlLocalhost => "https://localhost:5002";
     
     public static string NoClientBffUrl => "http://localhost:4203"; 
+    // public static string NoClientBffUrl => "http://no-bff-client.test:4203"; 
     public static IEnumerable<IdentityResource> IdentityResources { get; } =
     [
         new IdentityResources.OpenId(),
@@ -33,7 +34,7 @@ public static class Config
             ClientId = "bff1",
             ClientName = "BFF1 IS Client",
             AllowedGrantTypes = GrantTypes.Code,
-            RedirectUris = { $"{Bff1Url}/signin-oidc" },
+            RedirectUris = { $"{Bff1Url}/signin-oidc", Bff1Url },
             PostLogoutRedirectUris = { $"{Bff1Url}" },
             BackChannelLogoutUri = $"{Bff1UrlLocalhost}/bff/backchannel",
             BackChannelLogoutSessionRequired = true,
@@ -48,7 +49,7 @@ public static class Config
             ClientId = "bff2",
             ClientSecrets = { new Secret("49C1A7E1-0C79-4A89-A3D6-A37998FB86B0".Sha256()) },
             ClientName = "BFF2 IS Client",
-            RedirectUris = { $"{Bff2Url}/signin-oidc"},
+            RedirectUris = { $"{Bff2Url}/signin-oidc", Bff2Url},
             PostLogoutRedirectUris = { $"{Bff2Url}" },
             BackChannelLogoutUri = $"{Bff2UrlLocalhost}/bff/backchannel",
             BackChannelLogoutSessionRequired = true,
@@ -62,7 +63,7 @@ public static class Config
             ClientId = "no_bff",
             RequireClientSecret = false,
             ClientName = "No BFF IS Client",
-            RedirectUris = { $"{NoClientBffUrl}/main-page", $"{NoClientBffUrl}/silent-refresh.html"  },
+            RedirectUris = { $"{NoClientBffUrl}/main-page", $"{NoClientBffUrl}/silent-refresh.html", $"{NoClientBffUrl}/signout-oidc" },
             FrontChannelLogoutUri = $"{NoClientBffUrl}/signout-oidc",
             PostLogoutRedirectUris = { $"{NoClientBffUrl}/main-page" },
             ClientSecrets = { new Secret("no-bff-secret".Sha256()) },

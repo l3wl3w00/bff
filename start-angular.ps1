@@ -4,5 +4,9 @@ Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.Bf
 Write-Host "`nStarting Angular Client2..."
 Start-Process "cmd" -ArgumentList "/k npm start" -WorkingDirectory ".\BffDemo.Bff2\BffDemo.Client2" -PassThru
 
-Start-Process "cmd" -ArgumentList "/c start http://localhost:4200"
-Start-Process "cmd" -ArgumentList "/c start http://localhost:4201"
+Write-Host "`nStarting No Bff Angular Client..."
+Start-Process "cmd" -ArgumentList "/c npm start" -WorkingDirectory ".\BffDemo.NoBffApplication\BffDemo.NoBffClient" -PassThru
+
+Start-Process "cmd" -ArgumentList "/c start http://bff-client-1.test:4201"
+Start-Process "cmd" -ArgumentList "/c start http://bff-client-2.test:4202"
+Start-Process "cmd" -ArgumentList "/c start http://no-bff-client.test:4203"

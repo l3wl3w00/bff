@@ -37,38 +37,46 @@ export class MainPageComponent {
   jwtToken: string | null = null;
   decodedToken: any = {};
 
-  constructor(
-    private readonly oauthService: OAuthService
-  ) {
-    this.oauthService.loadDiscoveryDocumentAndTryLogin().then(x => {
-      if (this.oauthService.hasValidAccessToken()) {
-        this.jwtToken = this.oauthService.getAccessToken();
-        this.decodedToken = this.decodeJwt(this.jwtToken);
-        console.log('JWT token stored:', this.jwtToken);
-      } else {
-        this.jwtToken = '';
-        console.log('invalid access token: ', this.oauthService.getAccessToken(), x);
-      }
-      this.oauthService.silentRefresh().then(
-        info => {
-          console.log('Silent refresh succeeded', info);
-          if (this.oauthService.hasValidAccessToken()) {
-            this.jwtToken = this.oauthService.getAccessToken();
-            this.decodedToken = this.decodeJwt(this.jwtToken);
-            console.log('JWT token stored:', this.jwtToken);
-          } else {
-            this.jwtToken = '';
-            sessionStorage.clear();
-            console.log('invalid access token: ', this.oauthService.getAccessToken(), x);
-          }
-        },
-        err => {
-          console.error('Silent refresh failed', err);
-          this.jwtToken = '';
-          sessionStorage.clear();
-        });
-    })
+  constructor(private readonly oauthService: OAuthService) { }
+
+  ngOnInit(): void {
+    this.initializeAuthentication();
   }
+
+  private initializeAuthentication(): void {
+    this.oauthService.loadDiscoveryDocumentAndTryLogin()
+      .then(loginResult => {
+        if (this.oauthService.hasValidAccessToken()) {
+          this.jwtToken = this.oauthService.getAccessToken();
+          this.decodedToken = this.decodeJwt(this.jwtToken);
+          console.log('JWT token stored:', this.jwtToken);
+        } else {
+          this.jwtToken = '';
+          console.log('Invalid access token:', this.oauthService.getAccessToken(), loginResult);
+        }
+
+        // Attempt silent refresh
+        return this.oauthService.silentRefresh();
+      })
+      .then(refreshResult => {
+        console.log('Silent refresh succeeded:', refreshResult);
+        if (this.oauthService.hasValidAccessToken()) {
+          this.jwtToken = this.oauthService.getAccessToken();
+          this.decodedToken = this.decodeJwt(this.jwtToken);
+          console.log('JWT token stored:', this.jwtToken);
+        } else {
+          this.jwtToken = '';
+          // sessionStorage.clear();
+          console.log('Invalid access token after refresh:', this.oauthService.getAccessToken());
+        }
+      })
+      .catch(err => {
+        console.error('Silent refresh failed:', err);
+        this.jwtToken = '';
+        // sessionStorage.clear();
+      });
+  }
+
 
   decodeJwt(token: string): any {
     try {

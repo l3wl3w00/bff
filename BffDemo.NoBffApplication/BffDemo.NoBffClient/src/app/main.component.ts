@@ -45,36 +45,45 @@ export class MainPageComponent {
 
   private initializeAuthentication(): void {
     this.oauthService.loadDiscoveryDocumentAndTryLogin()
-      .then(loginResult => {
-        if (this.oauthService.hasValidAccessToken()) {
-          this.jwtToken = this.oauthService.getAccessToken();
-          this.decodedToken = this.decodeJwt(this.jwtToken);
-          console.log('JWT token stored:', this.jwtToken);
-        } else {
-          this.jwtToken = '';
-          console.log('Invalid access token:', this.oauthService.getAccessToken(), loginResult);
-        }
-
-        // Attempt silent refresh
-        return this.oauthService.silentRefresh();
-      })
-      .then(refreshResult => {
-        console.log('Silent refresh succeeded:', refreshResult);
-        if (this.oauthService.hasValidAccessToken()) {
-          this.jwtToken = this.oauthService.getAccessToken();
-          this.decodedToken = this.decodeJwt(this.jwtToken);
-          console.log('JWT token stored:', this.jwtToken);
-        } else {
-          this.jwtToken = '';
-          // sessionStorage.clear();
-          console.log('Invalid access token after refresh:', this.oauthService.getAccessToken());
-        }
+      .then(_ => {
+        console.log('Discovery document loaded');
       })
       .catch(err => {
-        console.error('Silent refresh failed:', err);
-        this.jwtToken = '';
-        // sessionStorage.clear();
+        console.error('Discovery document loading failed:', err);
       });
+    // removed silent login temporarily to be able to demonstrate a bug with global logout
+
+    // this.oauthService.loadDiscoveryDocumentAndTryLogin()
+    //   .then(loginResult => {
+    //     if (this.oauthService.hasValidAccessToken()) {
+    //       this.jwtToken = this.oauthService.getAccessToken();
+    //       this.decodedToken = this.decodeJwt(this.jwtToken);
+    //       console.log('JWT token stored:', this.jwtToken);
+    //     } else {
+    //       this.jwtToken = '';
+    //       console.log('Invalid access token:', this.oauthService.getAccessToken(), loginResult);
+    //     }
+    //
+    //     // Attempt silent refresh
+    //     return this.oauthService.silentRefresh();
+    //   })
+    //   .then(refreshResult => {
+    //     console.log('Silent refresh succeeded:', refreshResult);
+    //     if (this.oauthService.hasValidAccessToken()) {
+    //       this.jwtToken = this.oauthService.getAccessToken();
+    //       this.decodedToken = this.decodeJwt(this.jwtToken);
+    //       console.log('JWT token stored:', this.jwtToken);
+    //     } else {
+    //       this.jwtToken = '';
+    //       // sessionStorage.clear();
+    //       console.log('Invalid access token after refresh:', this.oauthService.getAccessToken());
+    //     }
+    //   })
+    //   .catch(err => {
+    //     console.error('Silent refresh failed:', err);
+    //     this.jwtToken = '';
+    //     // sessionStorage.clear();
+    //   });
   }
 
 

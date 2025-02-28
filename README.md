@@ -62,6 +62,8 @@ Az alkalmazások elindítása után a script user inputot vár a terminálba, am
 - 'q' betű beütése után minden futó alkalmazást bezár
 - 'r' betű leütése után a .NET alkalmazásokat újraindítja (az angularokat nem kell, mert azok maguktól frissülnek)
 
+A fenti script azonban akkor nem hasznos, ha debuggolni akarjuk a .NET projekteket. Ebben az esetben érdemes külön-külön debug módban elindatani a szerver oldali kódot, majd a `start-angular.ps1` scriptet futtatni, ami a frontendeket indítja el.
+
 A teljes folyamat szimulálásához mind a 8 komponenst külön-külön el kell indítani.
 - A BFF-eket, az Identity Servert és a Backend-et szokásos .NET projektként kell futtatni
   - Visual Studioban jobb klikk a projektre -> Debug -> Start New Instance

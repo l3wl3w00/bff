@@ -1,5 +1,6 @@
 using Duende.Bff.Yarp;
 using BffDemo.Bff1;
+using BffDemo.Bff2;
 using Duende.Bff;
 using IdentityModel;
 using Microsoft.AspNetCore.Authentication;
@@ -29,6 +30,8 @@ builder.Services
     .AddRemoteApis()
     .AddServerSideSessions();
 builder.Services.AddTransient<IReturnUrlValidator, AnyUrlValidator>();
+builder.Services.AddTransient<ISilentLoginCallbackService, MySilentLoginCallbackService>();
+
 builder.Services.AddAuthentication(options =>
     {
         options.DefaultScheme = "cookie";

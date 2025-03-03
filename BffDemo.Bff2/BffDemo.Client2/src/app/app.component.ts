@@ -45,13 +45,13 @@ export class AppComponent {
 
   constructor(private readonly http: HttpClient) {}
   ngOnInit(): void {
-    this.triggerSilentLogin();
     this.getUserInfo().subscribe({
       next: (claims) => {
         this.userClaims = claims;
       },
       error: (err) => {
         console.error('Not logged in or error fetching user:', err);
+        this.triggerSilentLogin();
         this.userClaims = [];
       }
     });
@@ -71,17 +71,11 @@ export class AppComponent {
   }
   triggerSilentLogin(): void {
     window.parent.addEventListener("message", e => {
-      console.log("message");
-
       if (e.origin !== this.bffUrl) {
         return;
       }
       if (e.data && e.data.source === 'bff-silent-login' && e.data.isLoggedIn) {
-        console.log("reload");
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('reload') === null) {
-          window.location.href = window.location.href + "?reload=0";
-        }
+        window.location.reload();
       }
     });
     const iframe: any = document.querySelector('#bff-silent-login');

@@ -51,6 +51,7 @@ export class AppComponent {
       },
       error: (err) => {
         console.error('Not logged in or error fetching user:', err);
+        this.triggerSilentLogin();
         this.userClaims = [];
         this.triggerSilentLogin();
       }

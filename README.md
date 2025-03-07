@@ -56,11 +56,6 @@ Ezzel lényegében minden kliens és server külön domainen fut, és ezért él
 ## Indítás
 A legelső indítás előtt:
 - Navigáljunk el a `BffDemo.NoBffApplication/BffDemo.NoBffClient` mappába, és futtassuk az `npm install` parancsot
-  
-Készült egy script, ami automatizálja az indítást, ez a gyökér mappában a `start.ps1` című file. Ezt a scriptet futtatva elindul minden szükséges alkalmazás.
-Az alkalmazások elindítása után a script user inputot vár a terminálba, ami 2 féle lehet:
-- 'q' betű beütése után minden futó alkalmazást bezár
-- 'r' betű leütése után a .NET alkalmazásokat újraindítja (az angularokat nem kell, mert azok maguktól frissülnek)
 
 A teljes folyamat szimulálásához mind a 8 komponenst külön-külön el kell indítani.
 - A BFF-eket, az Identity Servert és a Backend-et szokásos .NET projektként kell futtatni
@@ -69,3 +64,9 @@ A teljes folyamat szimulálásához mind a 8 komponenst külön-külön el kell 
   - Navigáljunk el a `BffDemo.Bff1/BffDemo.Client1`, a `BffDemo.Bff2/BffDemo.Client2` vagy a `BffDemo.NoBffApplication/BffDemo.NoBffClient` mappába,
   - majd futtasuk az `npm start` parancsot
 
+Készült egy script, ami automatizálja az indítást, ez a gyökér mappában a `start.ps1` című file. Ezt a scriptet futtatva elindul minden szükséges alkalmazás.
+Az alkalmazások elindítása után a script user inputot vár a terminálba, ami 2 féle lehet:
+- 'q' betű beütése után minden futó alkalmazást bezár
+- 'r' betű leütése után a .NET alkalmazásokat újraindítja (az angularokat nem kell, mert azok maguktól frissülnek)
+
+A fenti script azonban akkor nem hasznos, ha debuggolni akarjuk a .NET projekteket. Ebben az esetben érdemes külön-külön debug módban elindatani a szerver oldali kódot, majd a `start-angular.ps1` scriptet futtatni, ami a frontendeket indítja el.

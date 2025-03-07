@@ -8,7 +8,7 @@ amik párhuzamosan futnak, és kommunikálnak egymással:
   - A `BffDemo.Bff1/BffDemo.Client1` és a `BffDemo.Bff2/BffDemo.Client2` mappa alatt találhatók a BFF kliensek
   - A `BffDemo.NoBffApplication/BffDemo.NoBffClient` mappa alatt található a BFF nélüli kliens
   - Ezek angular kliensek
-  - A `bff-client-1.test:4201` és a `bff-client-2.test:4202` címen vannak a BFF kliensek és `localhost:4203` címen található a BFF nélküli app kliense. 
+  - A `bff-client-1.test:4201` és a `bff-client-2.test:4202` címen vannak a BFF kliensek és `no-bff-client.test:4203` címen található a BFF nélküli app kliense. 
   - Habár jelen esetben kódjukban szinte azonsak, ezek teljesen független alkalmazásnak a klienseit szimulálják. 
 - BFF 1 és BFF 2:
   - Ezek a BFF komponensei a 2 BFF alkalmazásnak.
@@ -20,9 +20,9 @@ amik párhuzamosan futnak, és kommunikálnak egymással:
   - Ez maga az identity server, ami bejelentkezteti a felhasználókat, és szolgáltatja a tokeneket.
   - Ezen template alapján készült: https://github.com/DuendeSoftware/IdentityServer.Templates/tree/main/src/IdentityServerInMem
   - `localhost:5000` címen fut
-- Backend
-  - Ez pedig egy egyszerű ASP.NET backend WEB API, amit mindkét alkalmazás authentikáltan hív
-  - `localhost:6000` címen fut
+- Backendek
+  - Ezek pedig egy egyszerű ASP.NET backend WEB API-k, amiket az alkalmazások authentikáltan hívnak
+  - `localhost:6000` és `localhost:6001` címeken futnak
 ## Folyamat
 
 Az alábbi ábra szemlélteti azt a folyamatot, ami által a felhasználó mindkét alkalmazásba bejelentkezik, de az adatait csak az első alkalommal adja meg:
@@ -50,6 +50,8 @@ Lokális futtatás előtt érdemes lehet az alábbi 4 sort beilleszteni a hosts 
 127.0.0.1   bff-server-2.test
 127.0.0.1   bff-client-1.test
 127.0.0.1   bff-client-2.test
+
+127.0.0.1   no-bff-client.test
 ```
 Ezzel lényegében minden kliens és server külön domainen fut, és ezért élethűbben szimulálja a valóságot
 

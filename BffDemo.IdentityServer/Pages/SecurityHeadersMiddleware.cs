@@ -15,7 +15,7 @@ public class SecurityHeadersMiddleware
 
         if (!context.Response.Headers.ContainsKey("Content-Security-Policy"))
         {
-            var csp = "frame-src http://localhost:4203 https://localhost:5000 http://no-bff-client.test:4203;";
+            var csp = "frame-src http://localhost:4203 https://localhost:5000 https://id-server.test:5000 http://no-bff-client.test:4203;";
             context.Response.Headers.Append("Content-Security-Policy", csp);
         }
         

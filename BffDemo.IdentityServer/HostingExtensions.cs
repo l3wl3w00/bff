@@ -21,7 +21,9 @@ internal static class HostingExtensions
                 // see https://docs.duendesoftware.com/identityserver/v6/fundamentals/resources/
                 options.EmitStaticAudienceClaim = true;
             })
-            .AddTestUsers(TestUsers.Users);
+            .AddTestUsers(TestUsers.Users)   
+            .AddCustomAuthorizeRequestValidator<CustomAuthorizeRequestValidator>();
+        ;
 
         // in-memory, code config
         isBuilder.AddInMemoryIdentityResources(Config.IdentityResources);
@@ -53,7 +55,7 @@ internal static class HostingExtensions
             //
             //     // register your IdentityServer with Google at https://console.developers.google.com
             //     // enable the Google+ API
-            //     // set the redirect URI to https://localhost:5000/signin-google
+            //     // set the redirect URI to <identity-server-url>/signin-google
             //     options.ClientId = "copy client ID from Google here";
             //     options.ClientSecret = "copy client secret from Google here";
             // });

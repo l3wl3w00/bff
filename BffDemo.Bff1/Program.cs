@@ -65,6 +65,7 @@ builder.Services.AddAuthentication(options =>
             NameClaimType = JwtClaimTypes.Name,
             RoleClaimType = JwtClaimTypes.Role
         };
+        options.RequireHttpsMetadata = false;
     });
 
 var app = builder.Build();

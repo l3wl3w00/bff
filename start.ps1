@@ -45,7 +45,7 @@ function Build-Solution {
 #--------------------------------------------------------------------
 function Start-DotNetProcesses {
     Write-Host "`nStarting IdentityServer..."
-    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile SelfHost" -WorkingDirectory ".\BffDemo.IdentityServer" -PassThru
+    $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.IdentityServer" -PassThru
 
     Write-Host "`nStarting the .NET Back End..."
     $global:dotnetProcesses += Start-Process "dotnet" -ArgumentList "run --launch-profile default" -WorkingDirectory ".\BffDemo.Backend" -PassThru

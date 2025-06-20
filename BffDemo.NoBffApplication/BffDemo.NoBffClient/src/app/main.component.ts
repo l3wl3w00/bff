@@ -102,4 +102,26 @@ export class MainPageComponent {
       this.decodedToken = {};
     }
   }
+
+  private triggerSilentLogin() {
+    this.oauthService
+      .silentRefresh()
+      .then(refreshResult => {
+            console.log('Silent refresh succeeded:', refreshResult);
+            if (this.oauthService.hasValidAccessToken()) {
+              this.jwtToken = this.oauthService.getAccessToken();
+              this.decodedToken = this.decodeJwt(this.jwtToken);
+              console.log('JWT token stored:', this.jwtToken);
+            } else {
+              this.jwtToken = '';
+              // sessionStorage.clear();
+              console.log('Invalid access token after refresh:', this.oauthService.getAccessToken());
+            }
+          })
+      .catch(err => {
+        console.error('Silent refresh failed:', err);
+        this.jwtToken = '';
+        // sessionStorage.clear();
+      });
+  }
 }

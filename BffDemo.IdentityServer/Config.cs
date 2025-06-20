@@ -12,7 +12,7 @@ public static class Config
     public static string Bff1UrlLocalhost => "https://localhost:5001";
     public static string Bff2UrlLocalhost => "https://localhost:5002";
     
-    public static string NoClientBffUrl => "http://localhost:4203"; 
+    public static string NoClientBffUrl => "http://no-bff-client.test:4203"; 
     public static IEnumerable<IdentityResource> IdentityResources { get; } =
     [
         new IdentityResources.OpenId(),
